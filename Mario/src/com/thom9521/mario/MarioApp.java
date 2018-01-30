@@ -47,7 +47,7 @@ public class MarioApp extends GameApplication {
     protected void initGame() {
         getGameWorld().setLevelFromMap("mario.json");
 
-        player = getGameWorld().spawn("player",50,50);
+        player = getGameWorld().spawn("player",50,600);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class MarioApp extends GameApplication {
             @Override
             protected void onCollisionBegin(Entity player, Entity coin) {
                 coin.removeFromWorld();
-
+                getAudioPlayer().playSound("coin.wav");
             }
         });
 
@@ -66,6 +66,7 @@ public class MarioApp extends GameApplication {
             getDisplay().showMessageBox("Level Complete!", () -> {
                 System.out.println("Dialog Closed!");
             });
+            getAudioPlayer().playSound("1-up.wav");
             }
         });
     }
