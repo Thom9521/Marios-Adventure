@@ -1,0 +1,130 @@
+14:28:01.473 [JavaFX Application Thread] DEBUG GameApplication      - Logger initialized
+14:28:01.505 [JavaFX Application Thread] DEBUG MainWindow           - Creating a JavaFX scene
+14:28:01.506 [JavaFX Application Thread] DEBUG MainWindow           - Target size > screen size
+14:28:01.726 [JavaFX Application Thread] DEBUG MainWindow           - Target settings size: 1050.0 x 700.0
+14:28:01.727 [JavaFX Application Thread] DEBUG MainWindow           - Scaled scene size:    995.0 x 680.0
+14:28:01.727 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (0.9476190476190476, 0.9714285714285714)
+14:28:01.912 [JavaFX Application Thread] DEBUG GameApplication      - Starting FXGL
+14:28:01.912 [JavaFX Application Thread] INFO  Version              - FXGL-0.4.1
+14:28:01.913 [JavaFX Application Thread] INFO  Version              - Source code and latest versions at: https://github.com/AlmasB/FXGL
+14:28:01.913 [JavaFX Application Thread] INFO  Version              -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+14:28:01.989 [FXGL Launcher Thread     ] DEBUG FXGL                 - Loading FXGL system data
+14:28:01.997 [FXGL Launcher Thread     ] DEBUG IOTask               - Executing task: readDataTask(system/fxgl.bundle)
+14:28:02.007 [FXGL Launcher Thread     ] DEBUG FS                   - Reading from: system\fxgl.bundle
+14:28:02.022 [FXGL Launcher Thread     ] DEBUG IOTask               - Task succeeded: readDataTask(system/fxgl.bundle)
+14:28:02.022 [FXGL Launcher Thread     ] DEBUG Bundle               - Logging bundle: FXGL
+14:28:02.023 [FXGL Launcher Thread     ] DEBUG Bundle               - FXGL.offline.timer.version.check=2018-01-30T13:31:16.275269400
+14:28:02.024 [FXGL Launcher Thread     ] DEBUG GameApplication      - FXGL configuration complete
+14:28:02.026 [FXGL Launcher Thread     ] INFO  GameApplication      - FXGL configuration took:  0,104 sec
+14:28:02.026 [FXGL Launcher Thread     ] DEBUG GameApplication      - Logging game settings
+Title: Untitled
+Version: 0.0
+Width: 1050
+Height: 700
+Fullscreen: false
+Intro: false
+Menus: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class com.almasb.fxgl.scene.SceneFactory
+Dialog Factory: class com.almasb.fxgl.ui.FXGLDialogFactory
+UI Factory: class com.almasb.fxgl.ui.FXGLUIFactory
+Notification Service: class com.almasb.fxgl.gameplay.notification.XboxNotificationView
+Exception Handler: class com.almasb.fxgl.app.FXGLExceptionHandler
+14:28:02.085 [FXGL Launcher Thread     ] DEBUG GameApplication      - Configuring GameApplication
+14:28:02.125 [FXGL Launcher Thread     ] DEBUG AppStateMachine      - Initializing application states
+14:28:02.139 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+14:28:02.166 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+14:28:02.178 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/sounds/core/notification.wav
+14:28:02.219 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/sounds/menu/select.wav
+14:28:02.222 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/sounds/menu/back.wav
+14:28:02.225 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/sounds/menu/press.wav
+14:28:02.228 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/fonts/VarelaRound-Regular.ttf
+14:28:02.534 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/fonts/lucida_console.ttf
+14:28:02.553 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+14:28:02.554 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/icons/fxgl_icon.png
+14:28:02.592 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+14:28:02.619 [FXGL Launcher Thread     ] DEBUG FXGL.GameScene       - Game scene initialized: 1050x700
+14:28:02.624 [FXGL Launcher Thread     ] DEBUG FXGL.GameWorld       - Game world initialized
+14:28:02.788 [FXGL Launcher Thread     ] DEBUG FXGL.PhysicsWorld    - Physics world initialized: appHeight=700, physics.ppm=50,0
+14:28:02.812 [FXGL Launcher Thread     ] DEBUG Input                - Registered new binding: Pause - Esc
+14:28:02.839 [FXGL Launcher Thread     ] INFO  GameApplication      - Game configuration took:  0,754 sec
+14:28:02.851 [JavaFX Application Thread] DEBUG MainWindow           - Opening main window
+14:28:02.891 [JavaFX Application Thread] DEBUG MainWindow           - Window border size: (15.0, 37.33331298828125)
+14:28:02.891 [JavaFX Application Thread] DEBUG MainWindow           - Scaled size: 995.0 x 680.0
+14:28:02.891 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (0.9476190476190476, 0.9714285714285714)
+14:28:02.891 [JavaFX Application Thread] DEBUG MainWindow           - Scene size: 995.0 x 680.0
+14:28:02.892 [JavaFX Application Thread] DEBUG MainWindow           - Stage size: 1010.0 x 717.3333129882812
+14:28:02.892 [JavaFX Application Thread] DEBUG GameApplication      - Running preInit()
+14:28:02.894 [JavaFX Application Thread] DEBUG AnnotationParser     - Main app package name: com.thom9521.mario
+14:28:03.126 [JavaFX Application Thread] DEBUG AnnotationParser     - @SetAchievementStore: []
+14:28:03.127 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - P
+14:28:03.128 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Dev Options - CTRL+0
+14:28:03.129 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Left - A
+14:28:03.129 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Right - D
+14:28:03.129 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Jump - W
+14:28:03.191 [JavaFX Application Thread] DEBUG GameApplication      - Starting main loop
+14:28:03.194 [JavaFX Application Thread] DEBUG StartupState         - STARTUP
+14:28:03.195 [JavaFX Application Thread] DEBUG GameApplication      - Starting new game
+14:28:03.195 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:28:03.195 [JavaFX Application Thread] DEBUG AppStateMachine      - StartupState -> LoadingState
+14:28:03.233 [JavaFX Application Thread] DEBUG AnnotationParser     - Main app package name: com.thom9521.mario
+14:28:03.233 [JavaFX Application Thread] DEBUG InitAppTask          - Parsing annotations
+14:28:03.298 [JavaFX Application Thread] DEBUG AnnotationParser     - @AddCollisionHandler: []
+14:28:03.298 [JavaFX Application Thread] DEBUG AnnotationParser     - @SetEntityFactory: [MarioFactory]
+14:28:03.298 [JavaFX Application Thread] DEBUG AnnotationParser     - @SetEventHandler: []
+14:28:03.309 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Clearing previous game
+14:28:03.309 [FXGL Background Thread 1 ] DEBUG FXGL.GameWorld       - Clearing game world
+14:28:03.315 [FXGL Background Thread 1 ] DEBUG FXGL.PhysicsWorld    - Clearing physics world
+14:28:03.315 [FXGL Background Thread 1 ] DEBUG FXGL.GameScene       - Clearing game scene
+14:28:03.315 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Assets
+14:28:03.317 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Game
+14:28:03.350 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/json/mario.json
+14:28:03.751 [FXGL Background Thread 1 ] DEBUG FXGL.GameWorld       - Clearing removable entities
+14:28:03.752 [FXGL Background Thread 1 ] DEBUG FXGL.GameWorld       - Setting level from map
+14:28:03.792 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/tiles_spritesheet.png
+14:28:03.830 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.830 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.830 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.831 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.831 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.831 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.832 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.832 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.832 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.832 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.833 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.833 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.833 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.833 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.833 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.834 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.834 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.834 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.834 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.834 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.835 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.835 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.835 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.835 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.835 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.836 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_spritesheet.png
+14:28:03.838 [FXGL Background Thread 1 ] DEBUG FXGL.GameScene       - Creating render group for layer: BACKGROUND(1000)
+14:28:03.898 [FXGL Background Thread 1 ] DEBUG FXGL.GameScene       - Creating render group for layer: TOP(2147483647)
+14:28:03.908 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Physics
+14:28:03.909 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing UI
+14:28:03.909 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initialization Complete
+14:28:03.909 [FXGL Background Thread 1 ] INFO  InitAppTask          - Game initialization took: 0,601 sec
+14:28:03.919 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:28:03.919 [JavaFX Application Thread] DEBUG AppStateMachine      - LoadingState -> PlayState
+14:28:30.676 [JavaFX Application Thread] DEBUG GameApplication      - Exiting game application
+14:28:30.679 [JavaFX Application Thread] DEBUG GameApplication      - Shutting down background threads
+14:28:30.680 [JavaFX Application Thread] DEBUG GameApplication      - Exiting FXGL
+14:28:30.681 [JavaFX Application Thread] DEBUG FXGL                 - Saving FXGL system data
+14:28:30.685 [JavaFX Application Thread] DEBUG IOTask               - Executing task: writeDataTask(system/fxgl.bundle)
+14:28:30.694 [JavaFX Application Thread] DEBUG FS                   - Writing to: system\fxgl.bundle
+14:28:30.716 [JavaFX Application Thread] DEBUG IOTask               - Task succeeded: writeDataTask(system/fxgl.bundle)
+14:28:30.716 [JavaFX Application Thread] DEBUG GameApplication      - Closing logger and exiting JavaFX

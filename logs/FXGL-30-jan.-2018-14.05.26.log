@@ -1,0 +1,122 @@
+14:05:19.372 [JavaFX Application Thread] DEBUG GameApplication      - Logger initialized
+14:05:19.417 [JavaFX Application Thread] DEBUG MainWindow           - Creating a JavaFX scene
+14:05:19.418 [JavaFX Application Thread] DEBUG MainWindow           - Target size > screen size
+14:05:19.660 [JavaFX Application Thread] DEBUG MainWindow           - Target settings size: 1050.0 x 700.0
+14:05:19.660 [JavaFX Application Thread] DEBUG MainWindow           - Scaled scene size:    995.0 x 680.0
+14:05:19.660 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (0.9476190476190476, 0.9714285714285714)
+14:05:19.967 [JavaFX Application Thread] DEBUG GameApplication      - Starting FXGL
+14:05:19.968 [JavaFX Application Thread] INFO  Version              - FXGL-0.4.1
+14:05:19.968 [JavaFX Application Thread] INFO  Version              - Source code and latest versions at: https://github.com/AlmasB/FXGL
+14:05:19.969 [JavaFX Application Thread] INFO  Version              -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+14:05:20.084 [FXGL Launcher Thread     ] DEBUG FXGL                 - Loading FXGL system data
+14:05:20.092 [FXGL Launcher Thread     ] DEBUG IOTask               - Executing task: readDataTask(system/fxgl.bundle)
+14:05:20.102 [FXGL Launcher Thread     ] DEBUG FS                   - Reading from: system\fxgl.bundle
+14:05:20.115 [FXGL Launcher Thread     ] DEBUG IOTask               - Task succeeded: readDataTask(system/fxgl.bundle)
+14:05:20.115 [FXGL Launcher Thread     ] DEBUG Bundle               - Logging bundle: FXGL
+14:05:20.117 [FXGL Launcher Thread     ] DEBUG Bundle               - FXGL.offline.timer.version.check=2018-01-30T13:31:16.275269400
+14:05:20.118 [FXGL Launcher Thread     ] DEBUG GameApplication      - FXGL configuration complete
+14:05:20.119 [FXGL Launcher Thread     ] INFO  GameApplication      - FXGL configuration took:  0,098 sec
+14:05:20.120 [FXGL Launcher Thread     ] DEBUG GameApplication      - Logging game settings
+Title: Untitled
+Version: 0.0
+Width: 1050
+Height: 700
+Fullscreen: false
+Intro: false
+Menus: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class com.almasb.fxgl.scene.SceneFactory
+Dialog Factory: class com.almasb.fxgl.ui.FXGLDialogFactory
+UI Factory: class com.almasb.fxgl.ui.FXGLUIFactory
+Notification Service: class com.almasb.fxgl.gameplay.notification.XboxNotificationView
+Exception Handler: class com.almasb.fxgl.app.FXGLExceptionHandler
+14:05:20.137 [FXGL Launcher Thread     ] DEBUG GameApplication      - Configuring GameApplication
+14:05:20.144 [FXGL Launcher Thread     ] DEBUG AppStateMachine      - Initializing application states
+14:05:20.159 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+14:05:20.181 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+14:05:20.194 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/sounds/core/notification.wav
+14:05:20.237 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/sounds/menu/select.wav
+14:05:20.241 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/sounds/menu/back.wav
+14:05:20.244 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/sounds/menu/press.wav
+14:05:20.247 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/fonts/VarelaRound-Regular.ttf
+14:05:20.505 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/fonts/lucida_console.ttf
+14:05:20.544 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+14:05:20.545 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/icons/fxgl_icon.png
+14:05:20.579 [FXGL Launcher Thread     ] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+14:05:20.607 [FXGL Launcher Thread     ] DEBUG FXGL.GameScene       - Game scene initialized: 1050x700
+14:05:20.657 [FXGL Launcher Thread     ] DEBUG FXGL.GameWorld       - Game world initialized
+14:05:20.766 [FXGL Launcher Thread     ] DEBUG FXGL.PhysicsWorld    - Physics world initialized: appHeight=700, physics.ppm=50,0
+14:05:20.805 [FXGL Launcher Thread     ] DEBUG Input                - Registered new binding: Pause - Esc
+14:05:20.844 [FXGL Launcher Thread     ] INFO  GameApplication      - Game configuration took:  0,707 sec
+14:05:20.853 [JavaFX Application Thread] DEBUG MainWindow           - Opening main window
+14:05:20.892 [JavaFX Application Thread] DEBUG MainWindow           - Window border size: (15.0, 37.33331298828125)
+14:05:20.893 [JavaFX Application Thread] DEBUG MainWindow           - Scaled size: 995.0 x 680.0
+14:05:20.893 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (0.9476190476190476, 0.9714285714285714)
+14:05:20.893 [JavaFX Application Thread] DEBUG MainWindow           - Scene size: 995.0 x 680.0
+14:05:20.893 [JavaFX Application Thread] DEBUG MainWindow           - Stage size: 1010.0 x 717.3333129882812
+14:05:20.893 [JavaFX Application Thread] DEBUG GameApplication      - Running preInit()
+14:05:20.896 [JavaFX Application Thread] DEBUG AnnotationParser     - Main app package name: com.thom9521.mario
+14:05:21.078 [JavaFX Application Thread] DEBUG AnnotationParser     - @SetAchievementStore: []
+14:05:21.080 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - P
+14:05:21.081 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Dev Options - CTRL+0
+14:05:21.144 [JavaFX Application Thread] DEBUG GameApplication      - Starting main loop
+14:05:21.149 [JavaFX Application Thread] DEBUG StartupState         - STARTUP
+14:05:21.149 [JavaFX Application Thread] DEBUG GameApplication      - Starting new game
+14:05:21.149 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:05:21.149 [JavaFX Application Thread] DEBUG AppStateMachine      - StartupState -> LoadingState
+14:05:21.196 [JavaFX Application Thread] DEBUG AnnotationParser     - Main app package name: com.thom9521.mario
+14:05:21.196 [JavaFX Application Thread] DEBUG InitAppTask          - Parsing annotations
+14:05:21.223 [JavaFX Application Thread] DEBUG AnnotationParser     - @SetEventHandler: []
+14:05:21.223 [JavaFX Application Thread] DEBUG AnnotationParser     - @SetEntityFactory: [MarioFactory]
+14:05:21.223 [JavaFX Application Thread] DEBUG AnnotationParser     - @AddCollisionHandler: []
+14:05:21.326 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Clearing previous game
+14:05:21.326 [FXGL Background Thread 1 ] DEBUG FXGL.GameWorld       - Clearing game world
+14:05:21.327 [FXGL Background Thread 1 ] DEBUG FXGL.PhysicsWorld    - Clearing physics world
+14:05:21.328 [FXGL Background Thread 1 ] DEBUG FXGL.GameScene       - Clearing game scene
+14:05:21.328 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Assets
+14:05:21.330 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Game
+14:05:21.362 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/json/mario.json
+14:05:21.774 [JavaFX Application Thread] FATAL GameApplication      - Uncaught Exception:
+14:05:21.775 [JavaFX Application Thread] FATAL GameApplication      - 
+
+Exception occurred: com.fasterxml.jackson.databind.JsonMappingException : Unexpected character ('"' (code 34)): was expecting comma to separate Object entries
+ at [Source: (BufferedInputStream); line: 13, column: 25]
+ at [Source: (BufferedInputStream); line: 13, column: 14] (through reference chain: com.almasb.fxgl.parser.tiled.TiledMap["layers"]->java.util.ArrayList[0])
+E: com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:391)
+E: com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:363)
+E: com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:306)
+E: com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:244)
+E: com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:27)
+E: com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:127)
+E: com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:287)
+E: com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:151)
+E: com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4001)
+E: com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3058)
+E: com.almasb.fxgl.asset.AssetLoader.loadJSON(AssetLoader.kt:335)
+E: com.almasb.fxgl.entity.GameWorld.setLevelFromMap(GameWorld.java:272)
+E: com.thom9521.mario.MarioApp.initGame(MarioApp.java:17)
+E: com.almasb.fxgl.app.LoadingState$InitAppTask.initGame(AppStates.kt:200)
+E: com.almasb.fxgl.app.LoadingState$InitAppTask.call(AppStates.kt:160)
+E: com.almasb.fxgl.app.LoadingState$InitAppTask.call(AppStates.kt:132)
+E: javafx.graphics/javafx.concurrent.Task$TaskCallable.call(Task.java:1425)
+E: java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+E: java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:514)
+E: java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+E: java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+E: java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+E: java.base/java.lang.Thread.run(Thread.java:844)
+
+14:05:21.775 [JavaFX Application Thread] FATAL GameApplication      - Application will now exit
+14:05:21.775 [JavaFX Application Thread] DEBUG GameApplication      - Stopping main loop
+14:05:26.820 [JavaFX Application Thread] DEBUG GameApplication      - Exiting game application
+14:05:26.821 [JavaFX Application Thread] DEBUG GameApplication      - Shutting down background threads
+14:05:26.822 [JavaFX Application Thread] DEBUG GameApplication      - Exiting FXGL
+14:05:26.822 [JavaFX Application Thread] DEBUG FXGL                 - Saving FXGL system data
+14:05:26.823 [JavaFX Application Thread] DEBUG IOTask               - Executing task: writeDataTask(system/fxgl.bundle)
+14:05:26.826 [JavaFX Application Thread] DEBUG FS                   - Writing to: system\fxgl.bundle
+14:05:26.834 [JavaFX Application Thread] DEBUG IOTask               - Task succeeded: writeDataTask(system/fxgl.bundle)
+14:05:26.834 [JavaFX Application Thread] DEBUG GameApplication      - Closing logger and exiting JavaFX
