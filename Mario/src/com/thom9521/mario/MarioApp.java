@@ -48,6 +48,11 @@ public class MarioApp extends GameApplication {
         getGameWorld().setLevelFromMap("mario.json");
 
         player = getGameWorld().spawn("player",50,600);
+         //minY er højden
+        getGameScene().getViewport().setBounds(-1500,0,1500,getHeight());
+        getGameScene().getViewport().bindToEntity(player, getWidth()/2, getHeight()/2);
+
+        getGameWorld().spawn("enemy", 550,50);
     }
 
     @Override

@@ -24,6 +24,20 @@ public class MarioFactory implements EntityFactory {
                 .build();
     }
 
+    @Spawns("enemy")
+    public Entity newEnemy(SpawnData data) {
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.DYNAMIC);
+
+        return Entities.builder()
+                .type(MarioType.ENEMY)
+                .from(data)
+                .viewFromNodeWithBBox(new Rectangle(30,30,Color.RED))
+                .with(physics)
+                .with(new EnemyControl())
+                .build();
+    }
+
     @Spawns("door")
     public Entity newDoor(SpawnData data) {
         return Entities.builder()
