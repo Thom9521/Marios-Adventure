@@ -56,6 +56,6 @@ public class PlayerControl extends Control {
     }
 
     public void jump(){
-        physics.setVelocityY(-400);
+        physics.setVelocityY(-350);
     }
 }

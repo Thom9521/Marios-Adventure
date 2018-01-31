@@ -2,6 +2,9 @@ package com.thom9521.mario;
 
 
 import com.almasb.fxgl.app.GameApplication;
+import com.almasb.fxgl.audio.AudioPlayer;
+import com.almasb.fxgl.audio.Music;
+import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
@@ -46,13 +49,14 @@ public class MarioApp extends GameApplication {
     @Override
     protected void initGame() {
         getGameWorld().setLevelFromMap("mario.json");
-
+        getAudioPlayer().playSound("themesong.mp3");
         player = getGameWorld().spawn("player",50,600);
          //minY er højden
         getGameScene().getViewport().setBounds(-1500,0,1500,getHeight());
         getGameScene().getViewport().bindToEntity(player, getWidth()/2, getHeight()/2);
 
         getGameWorld().spawn("enemy", 550,50);
+
     }
 
     @Override
@@ -74,9 +78,19 @@ public class MarioApp extends GameApplication {
             getAudioPlayer().playSound("1-up.wav");
             }
         });
+
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity enemy) {
+                player.removeFromWorld();
+
+                getAudioPlayer().playSound("die.wav");
+            }
+        });
     }
 
     public static void main(String[] args) {
         launch(args);
+
     }
 }

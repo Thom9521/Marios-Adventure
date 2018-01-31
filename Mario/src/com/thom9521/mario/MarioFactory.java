@@ -32,8 +32,11 @@ public class MarioFactory implements EntityFactory {
         return Entities.builder()
                 .type(MarioType.ENEMY)
                 .from(data)
-                .viewFromNodeWithBBox(new Rectangle(30,30,Color.RED))
+                //.viewFromNodeWithBBox(new Rectangle(30,30,Color.RED))
+                .viewFromTextureWithBBox("enemy.png")
+                .bbox(new HitBox(BoundingShape.box(28,33)))
                 .with(physics)
+                .with(new CollidableComponent(true))
                 .with(new EnemyControl())
                 .build();
     }
