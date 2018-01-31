@@ -71,7 +71,9 @@ public class MarioFactory implements EntityFactory {
         return Entities.builder()
                 .type(MarioType.COIN)
                 .from(data)
-                .viewFromNodeWithBBox(new Circle(data.<Integer>get("width") / 2, Color.GOLD))
+                //.viewFromNodeWithBBox(new Circle(data.<Integer>get("width") / 2, Color.GOLD))
+                .viewFromTextureWithBBox("coin.png")
+                .bbox(new HitBox(BoundingShape.box(25,28)))
                 .with(new CollidableComponent(true))
                 .build();
     }
