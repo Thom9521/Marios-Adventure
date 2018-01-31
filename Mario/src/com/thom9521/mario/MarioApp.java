@@ -1,6 +1,7 @@
 package com.thom9521.mario;
 
 
+import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.audio.AudioPlayer;
 import com.almasb.fxgl.audio.Music;
@@ -29,21 +30,21 @@ public class MarioApp extends GameApplication {
             protected void onAction() {
             player.getControl(PlayerControl.class).left();
             }
-        }, KeyCode.A);
+        }, KeyCode.LEFT);
 
         getInput().addAction(new UserAction("Right") {
             @Override
             protected void onAction() {
                 player.getControl(PlayerControl.class).right();
             }
-        }, KeyCode.D);
+        }, KeyCode.RIGHT);
 
         getInput().addAction(new UserAction("Jump") {
             @Override
             protected void onAction() {
                 player.getControl(PlayerControl.class).jump();
             }
-        }, KeyCode.W);
+        }, KeyCode.UP);
     }
 
     @Override
@@ -74,8 +75,9 @@ public class MarioApp extends GameApplication {
             protected void onCollisionBegin(Entity player, Entity door) {
             getDisplay().showMessageBox("Level Complete!", () -> {
                 System.out.println("Dialog Closed!");
+                getAudioPlayer().playSound("1-up.wav");
             });
-            getAudioPlayer().playSound("1-up.wav");
+
             }
         });
 
@@ -83,7 +85,7 @@ public class MarioApp extends GameApplication {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy) {
                 player.removeFromWorld();
-
+                FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
             }
         });
