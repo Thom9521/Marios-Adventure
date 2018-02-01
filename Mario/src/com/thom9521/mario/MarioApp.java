@@ -2,6 +2,7 @@ package com.thom9521.mario;
 
 
 import com.almasb.fxgl.app.FXGL;
+import com.almasb.fxgl.app.FXGLExceptionHandler;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.audio.AudioPlayer;
 import com.almasb.fxgl.audio.Music;
@@ -9,8 +10,15 @@ import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
+import com.almasb.fxgl.physics.PhysicsControl;
 import com.almasb.fxgl.settings.GameSettings;
+import com.almasb.fxgl.ui.Position;
+import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
+import org.jetbrains.annotations.NotNull;
+
+import java.awt.*;
+import java.sql.SQLOutput;
 
 
 public class MarioApp extends GameApplication {
@@ -22,12 +30,6 @@ public class MarioApp extends GameApplication {
     }
 
     private Entity player;
-
-    public void despawn() {
-    if(player ==null){
-        player.getWorld().spawn("player", 50, 600);
-    }
-}
 
 
     @Override
@@ -63,7 +65,7 @@ public class MarioApp extends GameApplication {
         getGameScene().getViewport().setBounds(-1500,0,3000,getHeight());
         getGameScene().getViewport().bindToEntity(player, getWidth()/2, getHeight()/2);
 
-        getGameWorld().spawn("enemy", 550,50);
+        getGameWorld().spawn("enemy", 650,50);
 
 
     }
@@ -85,14 +87,12 @@ public class MarioApp extends GameApplication {
                 System.out.println("Dialog Closed!");
                 getAudioPlayer().playSound("1-up.wav");
 
-                getGameWorld().setLevelFromMap("mario2.json");
 
-                player.getWorld().spawn("player",50,600);
-                //minY er højden
-                getGameScene().getViewport().setBounds(-1500,0,3000,getHeight());
-                getGameScene().getViewport().bindToEntity(player, getWidth()/2, getHeight()/2);
+                player.getWorld().setLevelFromMap("mario2.json");
+               // player.getWorld().spawn("player",50,600);
+                Point2D point2D = new Point2D(50, 600);
+                player.getControl(PhysicsControl.class).reposition(point2D);
 
-                getGameWorld().spawn("enemy", 550,50);
 
             });
 
@@ -106,10 +106,11 @@ public class MarioApp extends GameApplication {
                     player.removeFromWorld();
                     FXGL.getAudioPlayer().stopAllSounds();
                     getAudioPlayer().playSound("die.wav");
+
+
             }
         });
     }
-
     public static void main(String[] args) {
         launch(args);
 

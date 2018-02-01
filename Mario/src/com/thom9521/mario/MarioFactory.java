@@ -3,6 +3,7 @@ package com.thom9521.mario;
 
 import com.almasb.fxgl.entity.*;
 import com.almasb.fxgl.entity.component.CollidableComponent;
+import com.almasb.fxgl.entity.component.IrremovableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
@@ -61,6 +62,7 @@ public class MarioFactory implements EntityFactory {
                 .bbox(new HitBox(BoundingShape.box(32,42)))
                 //.viewFromNodeWithBBox(new Rectangle(30,30, Color.BLUE))
                 .with(physics)
+                .with(new IrremovableComponent())
                 .with(new CollidableComponent(true))
                 .with(new PlayerControl())
                 .build();
