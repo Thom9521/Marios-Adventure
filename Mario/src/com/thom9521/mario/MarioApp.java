@@ -17,11 +17,18 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initSettings(GameSettings settings) {
-        settings.setWidth(15*70);
-        settings.setHeight(10*70);
+        settings.setWidth(15 * 70);
+        settings.setHeight(10 * 70);
     }
 
     private Entity player;
+
+    public void despawn() {
+    if(player ==null){
+        player.getWorld().spawn("player", 50, 600);
+    }
+}
+
 
     @Override
     protected void initInput() {
@@ -53,10 +60,11 @@ public class MarioApp extends GameApplication {
         getAudioPlayer().playSound("themesong.mp3");
         player = getGameWorld().spawn("player",50,600);
          //minY er højden
-        getGameScene().getViewport().setBounds(-1500,0,1500,getHeight());
+        getGameScene().getViewport().setBounds(-1500,0,3000,getHeight());
         getGameScene().getViewport().bindToEntity(player, getWidth()/2, getHeight()/2);
 
         getGameWorld().spawn("enemy", 550,50);
+
 
     }
 
@@ -76,6 +84,16 @@ public class MarioApp extends GameApplication {
             getDisplay().showMessageBox("Level Complete!", () -> {
                 System.out.println("Dialog Closed!");
                 getAudioPlayer().playSound("1-up.wav");
+
+                getGameWorld().setLevelFromMap("mario2.json");
+
+                player.getWorld().spawn("player",50,600);
+                //minY er højden
+                getGameScene().getViewport().setBounds(-1500,0,3000,getHeight());
+                getGameScene().getViewport().bindToEntity(player, getWidth()/2, getHeight()/2);
+
+                getGameWorld().spawn("enemy", 550,50);
+
             });
 
             }
@@ -84,9 +102,10 @@ public class MarioApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY) {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy) {
-                player.removeFromWorld();
-                FXGL.getAudioPlayer().stopAllSounds();
-                getAudioPlayer().playSound("die.wav");
+
+                    player.removeFromWorld();
+                    FXGL.getAudioPlayer().stopAllSounds();
+                    getAudioPlayer().playSound("die.wav");
             }
         });
     }
