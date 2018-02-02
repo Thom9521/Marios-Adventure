@@ -16,10 +16,15 @@ import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.ui.Position;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.sql.SQLOutput;
+import java.util.Map;
+
+import static com.almasb.fxgl.app.DSLKt.inc;
 
 
 public class MarioApp extends GameApplication {
@@ -77,6 +82,7 @@ public class MarioApp extends GameApplication {
             @Override
             protected void onCollisionBegin(Entity player, Entity coin) {
                 coin.removeFromWorld();
+                getGameState().increment("score",+50);
                 getAudioPlayer().playSound("coin.wav");
             }
         });
@@ -155,6 +161,23 @@ public class MarioApp extends GameApplication {
 
 
     }
+
+    @Override
+    protected void initUI() {
+        Text uiScore = getUIFactory().newText("",50);
+        uiScore.setTranslateX(getWidth()-200);
+        uiScore.setTranslateY(50);
+        uiScore.fillProperty().bind(getGameState().objectProperty("stageColor"));
+        uiScore.textProperty().bind(getGameState().intProperty("score").asString());
+
+        getGameScene().addUINode(uiScore);
+    }
+      @Override
+    protected void initGameVars(Map<String, Object> vars) {
+        vars.put("stageColor", Color.BLACK);
+        vars.put("score",0);
+    }
+
 
     public static void main(String[] args) {
         launch(args);
