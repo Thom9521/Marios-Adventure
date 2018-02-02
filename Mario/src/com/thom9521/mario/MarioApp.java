@@ -58,7 +58,7 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario3.json");
+        getGameWorld().setLevelFromMap("mario2.json");
         getAudioPlayer().playSound("themesong.mp3");
         player = getGameWorld().spawn("player", 50, 600);
         //minY er højden
@@ -99,6 +99,25 @@ public class MarioApp extends GameApplication {
             }
         });
 
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR2) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity door2) {
+                getDisplay().showMessageBox("Level 2 Complete!", () -> {
+                    System.out.println("Dialog Closed!");
+                    getAudioPlayer().playSound("1-up.wav");
+
+
+                    player.getWorld().setLevelFromMap("mario3.json");
+                    // player.getWorld().spawn("player",50,600);
+
+                    player.getControl(PhysicsControl.class).reposition(despawn);
+
+
+                });
+
+            }
+        });
+
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY) {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy) {
@@ -107,7 +126,9 @@ public class MarioApp extends GameApplication {
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
                 getDisplay().showMessageBox("Game Over!", () -> {
-                    player.getWorld().setLevelFromMap("mario.json");
+                   // player.getWorld().setLevelFromMap("mario.json");
+                    player.getWorld();
+                    enemy.removeFromWorld();
                     getGameWorld().spawn("enemy", 650, 50);
                     player.getControl(PhysicsControl.class).reposition(despawn);
                     getAudioPlayer().playSound("themesong.mp3");
