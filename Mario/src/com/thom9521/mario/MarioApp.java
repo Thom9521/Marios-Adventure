@@ -58,14 +58,14 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario.json");
+        getGameWorld().setLevelFromMap("mario3.json");
         getAudioPlayer().playSound("themesong.mp3");
         player = getGameWorld().spawn("player", 50, 600);
         //minY er højden
         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
         getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
 
-        getGameWorld().spawn("enemy", 650, 50);
+        //getGameWorld().spawn("enemy", 650, 50);
 
 
     }
@@ -116,6 +116,26 @@ public class MarioApp extends GameApplication {
 
             }
         });
+
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DANGER) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity danger) {
+
+
+                FXGL.getAudioPlayer().stopAllSounds();
+                getAudioPlayer().playSound("die.wav");
+                getDisplay().showMessageBox("Game Over!", () -> {
+                    player.getWorld().setLevelFromMap("mario3.json");
+                    getGameWorld().spawn("enemy", 650, 50);
+                    player.getControl(PhysicsControl.class).reposition(despawn);
+                    getAudioPlayer().playSound("themesong.mp3");
+
+                });
+
+            }
+        });
+
+
     }
 
     public static void main(String[] args) {
