@@ -8,6 +8,7 @@ import com.almasb.fxgl.audio.AudioPlayer;
 import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsControl;
@@ -58,14 +59,14 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario2.json");
+        getGameWorld().setLevelFromMap("mario.json");
         getAudioPlayer().playSound("themesong.mp3");
-        player = getGameWorld().spawn("player", 50, 600);
+        player = getGameWorld().spawn("player", 70, 600);
         //minY er højden
         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
         getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
 
-        //getGameWorld().spawn("enemy", 650, 50);
+        getGameWorld().spawn("enemy", 390, 240);
 
 
     }
@@ -87,10 +88,10 @@ public class MarioApp extends GameApplication {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
 
-
                     player.getWorld().setLevelFromMap("mario2.json");
-                    // player.getWorld().spawn("player",50,600);
-
+                     player.getWorld().spawn("player",90,900);
+                    getGameWorld().spawn("enemy", 1050, 50);
+                    getGameWorld().spawn("enemy", 1485, 50);
                     player.getControl(PhysicsControl.class).reposition(despawn);
 
 
@@ -105,11 +106,7 @@ public class MarioApp extends GameApplication {
                 getDisplay().showMessageBox("Level 2 Complete!", () -> {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
-
-
                     player.getWorld().setLevelFromMap("mario3.json");
-                    // player.getWorld().spawn("player",50,600);
-
                     player.getControl(PhysicsControl.class).reposition(despawn);
 
 
@@ -128,8 +125,8 @@ public class MarioApp extends GameApplication {
                 getDisplay().showMessageBox("Game Over!", () -> {
                    // player.getWorld().setLevelFromMap("mario.json");
                     player.getWorld();
-                    enemy.removeFromWorld();
-                    getGameWorld().spawn("enemy", 650, 50);
+                   // enemy.removeFromWorld();
+                    //getGameWorld().spawn("enemy", 650, 50);
                     player.getControl(PhysicsControl.class).reposition(despawn);
                     getAudioPlayer().playSound("themesong.mp3");
 
@@ -146,8 +143,8 @@ public class MarioApp extends GameApplication {
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
                 getDisplay().showMessageBox("Game Over!", () -> {
-                    player.getWorld().setLevelFromMap("mario3.json");
-                    getGameWorld().spawn("enemy", 650, 50);
+                    player.getWorld();
+                   // getGameWorld().spawn("enemy", 650, 50);
                     player.getControl(PhysicsControl.class).reposition(despawn);
                     getAudioPlayer().playSound("themesong.mp3");
 

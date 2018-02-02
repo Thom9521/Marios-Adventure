@@ -12,6 +12,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
+import java.io.PushbackInputStream;
+import java.io.PushbackReader;
+
 @SetEntityFactory
 public class MarioFactory implements EntityFactory {
 
@@ -35,7 +38,7 @@ public class MarioFactory implements EntityFactory {
                 .from(data)
                 //.viewFromNodeWithBBox(new Rectangle(30,30,Color.RED))
                 .viewFromTextureWithBBox("enemy.png")
-                .bbox(new HitBox(BoundingShape.box(28,33)))
+                .bbox(new HitBox(BoundingShape.box(20,25)))
                 .with(physics)
                 .with(new CollidableComponent(true))
                 .with(new EnemyControl())

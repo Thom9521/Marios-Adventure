@@ -3,14 +3,21 @@ package com.thom9521.mario;
 import com.almasb.fxgl.core.math.FXGLMath;
 import com.almasb.fxgl.entity.Control;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.component.PositionComponent;
+import com.almasb.fxgl.entity.component.Required;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
 import javafx.util.Duration;
 
+@Required(PositionComponent.class)
 public class PlayerControl extends Control {
 
     private PhysicsComponent physics;
+
+    private double speed = 0;
+
+    private PositionComponent position;
 
     private AnimatedTexture texture;
 
@@ -38,6 +45,8 @@ public class PlayerControl extends Control {
         } else{
             texture.setAnimationChannel(animIdle);
         }
+
+        speed = tpf *60;
     }
 
     private boolean isMoving(){
