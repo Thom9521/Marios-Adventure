@@ -66,6 +66,7 @@ public class MarioApp extends GameApplication {
     protected void initGame() {
         getGameWorld().setLevelFromMap("mario.json");
         getAudioPlayer().playSound("themesong.mp3");
+
         player = getGameWorld().spawn("player", 70, 600);
         //minY er højden
         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
@@ -164,8 +165,8 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initUI() {
-        Text uiScore = getUIFactory().newText("",50);
-        uiScore.setTranslateX(getWidth()-200);
+        Text uiScore = getUIFactory().newText("Score:",50);
+        uiScore.setTranslateX(getWidth()-1000);
         uiScore.setTranslateY(50);
         uiScore.fillProperty().bind(getGameState().objectProperty("stageColor"));
         uiScore.textProperty().bind(getGameState().intProperty("score").asString());
@@ -174,8 +175,8 @@ public class MarioApp extends GameApplication {
     }
       @Override
     protected void initGameVars(Map<String, Object> vars) {
-        vars.put("stageColor", Color.BLACK);
-        vars.put("score",0);
+        vars.put("stageColor", Color.GOLD);
+        vars.put("score", 0);
     }
 
 

@@ -101,4 +101,11 @@ public class MarioFactory implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .build();
     }
+
+    @Spawns("imagelayer")
+    public Entity newImagelayer(SpawnData data){
+        return Entities.builder()
+                .from(data)
+                .build();
+    }
 }
