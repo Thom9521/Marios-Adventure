@@ -15,9 +15,6 @@ public class PlayerControl extends Control {
 
     private PhysicsComponent physics;
 
-    private double speed = 0;
-
-    private PositionComponent position;
 
     private AnimatedTexture texture;
 
@@ -45,8 +42,9 @@ public class PlayerControl extends Control {
         } else{
             texture.setAnimationChannel(animIdle);
         }
+        if (Math.abs(physics.getVelocityX()) < 140) //Player stopper med at gå hvis hastigheden kommer under 140.
+            physics.setVelocityX(0);
 
-        speed = tpf *60;
     }
 
     private boolean isMoving(){
