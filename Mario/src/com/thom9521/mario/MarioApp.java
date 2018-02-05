@@ -122,6 +122,21 @@ public class MarioApp extends GameApplication {
             }
         });
 
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR3) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity door3) {
+                FXGL.getAudioPlayer().stopAllSounds();
+                getAudioPlayer().playSound("dothemario.mp3");
+                getDisplay().showMessageBox("Level 3 Complete!     THE END", () -> {
+                    System.out.println("Dialog Closed!");
+
+
+
+                });
+
+            }
+        });
+
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY) {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy) {

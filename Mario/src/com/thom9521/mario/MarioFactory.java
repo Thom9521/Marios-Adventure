@@ -73,6 +73,15 @@ public class MarioFactory implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .build();
     }
+    @Spawns("door3")
+    public Entity newDoor3(SpawnData data) {
+        return Entities.builder()
+                .type(MarioType.DOOR3)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new CollidableComponent(true))
+                .build();
+    }
 
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {

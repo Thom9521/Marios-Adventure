@@ -155,7 +155,7 @@
                  "type":"platform",
                  "visible":true,
                  "width":69.9856847463019,
-                 "x":419.914108477811,
+                 "x":422.197734876532,
                  "y":209.957054238906
                 }, 
                 {
@@ -509,6 +509,17 @@
                  "width":65.4354,
                  "x":1961.21801861734,
                  "y":560.839069223772
+                }, 
+                {
+                 "height":96.8288549987896,
+                 "id":47,
+                 "name":"",
+                 "rotation":0,
+                 "type":"door3",
+                 "visible":true,
+                 "width":51.6420559993544,
+                 "x":1972.08101347535,
+                 "y":111.353183248608
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -516,7 +527,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":47,
+ "nextobjectid":48,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.1",
