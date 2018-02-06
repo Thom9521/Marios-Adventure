@@ -132,7 +132,7 @@ public class MarioApp extends GameApplication {
                     player.getWorld().setLevelFromMap("mario4.json");
                     getGameScene().getViewport().setBounds(-1500, 0, 3000, 1050);
                     getGameWorld().spawn("enemy", 450, 235);
-                    getGameWorld().spawn("enemy",550, 235);
+                    getGameWorld().spawn("enemy",570, 235);
                     getGameWorld().spawn("enemy2", 500, 400);
                     getGameWorld().spawn("enemy2", 900, 600);
                     getGameWorld().spawn("enemy", 1600, 450);
