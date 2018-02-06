@@ -44,6 +44,21 @@ public class MarioFactory implements EntityFactory {
                 .with(new EnemyControl())
                 .build();
     }
+    @Spawns("enemy2")
+    public Entity newEnemy2(SpawnData data) {
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.DYNAMIC);
+
+        return Entities.builder()
+                .type(MarioType.ENEMY2)
+                .from(data)
+                .viewFromTextureWithBBox("shell.jpg")
+                .bbox(new HitBox(BoundingShape.box(20,25)))
+                .with(physics)
+                .with(new CollidableComponent(true))
+                .with(new EnemyControl2())
+                .build();
+    }
 
     @Spawns("danger")
     public Entity newDanger(SpawnData data) {
@@ -51,6 +66,16 @@ public class MarioFactory implements EntityFactory {
                 .type(MarioType.DANGER)
                 .from(data)
                 .bbox(new HitBox(BoundingShape.box(65,65)))
+                .with(new CollidableComponent(true))
+                .build();
+    }
+    @Spawns("danger2")
+    public Entity newDanger2(SpawnData data) {
+        return Entities.builder()
+                .type(MarioType.DANGER2)
+                .from(data)
+                .viewFromTextureWithBBox("iceSpike.png")
+                .bbox(new HitBox(BoundingShape.box(65, 65)))
                 .with(new CollidableComponent(true))
                 .build();
     }
@@ -77,6 +102,15 @@ public class MarioFactory implements EntityFactory {
     public Entity newDoor3(SpawnData data) {
         return Entities.builder()
                 .type(MarioType.DOOR3)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new CollidableComponent(true))
+                .build();
+    }
+    @Spawns("door4")
+    public Entity newDoor4(SpawnData data) {
+        return Entities.builder()
+                .type(MarioType.DOOR4)
                 .from(data)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new CollidableComponent(true))

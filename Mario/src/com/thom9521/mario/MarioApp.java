@@ -37,6 +37,7 @@ public class MarioApp extends GameApplication {
 
     private Entity player;
     Point2D despawn = new Point2D(50, 600);
+    Point2D despawn4 = new Point2D(70, 235);
 
     @Override
     protected void initInput() {
@@ -64,15 +65,15 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario.json");
+        getGameWorld().setLevelFromMap("mario3.json");
         getAudioPlayer().playSound("themesong.mp3");
 
         player = getGameWorld().spawn("player", 70, 600);
-        //minY er højden
         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
         getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
 
         getGameWorld().spawn("enemy", 390, 240);
+
 
 
     }
@@ -125,13 +126,35 @@ public class MarioApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR3) {
             @Override
             protected void onCollisionBegin(Entity player, Entity door3) {
+                getDisplay().showMessageBox("Level 3 Complete!", () -> {
+                    System.out.println("Dialog Closed!");
+                    getAudioPlayer().playSound("1-up.wav");
+                    player.getWorld().setLevelFromMap("mario4.json");
+                    getGameScene().getViewport().setBounds(-1500, 0, 3000, 1050);
+                    getGameWorld().spawn("enemy", 450, 235);
+                    getGameWorld().spawn("enemy",550, 235);
+                    getGameWorld().spawn("enemy2", 500, 400);
+                    getGameWorld().spawn("enemy2", 900, 600);
+                    getGameWorld().spawn("enemy", 1600, 450);
+                    getGameWorld().spawn("enemy", 1500, 450);
+                    getGameWorld().spawn("enemy", 1400, 450);
+                    player.getControl(PhysicsControl.class).reposition(despawn4);
+
+
+                });
+
+            }
+        });
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR4) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity door4) {
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("dothemario.mp3");
-                getDisplay().showMessageBox("Level 3 Complete!     THE END", () -> {
+                getDisplay().showMessageBox("THE END", () -> {
                     System.out.println("Dialog Closed!");
-
-
-
+                });
+                getDisplay().showMessageBox("Level 4 Complete!", () -> {
+                    System.out.println("Dialog Closed!");
                 });
 
             }
@@ -140,16 +163,31 @@ public class MarioApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY) {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy) {
+                FXGL.getAudioPlayer().stopAllSounds();
+                getAudioPlayer().playSound("die.wav");
+                getDisplay().showMessageBox("Game Over!", () -> {
+                    player.getWorld();
+                    player.getControl(PhysicsControl.class).reposition(despawn4);
+                    getAudioPlayer().playSound("themesong.mp3");
+
+                });
+
+            }
+        });
+
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY2) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity enemy2) {
 
 
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
                 getDisplay().showMessageBox("Game Over!", () -> {
-                   // player.getWorld().setLevelFromMap("mario.json");
+                    // player.getWorld().setLevelFromMap("mario.json");
                     player.getWorld();
-                   // enemy.removeFromWorld();
+                    // enemy.removeFromWorld();
                     //getGameWorld().spawn("enemy", 650, 50);
-                    player.getControl(PhysicsControl.class).reposition(despawn);
+                    player.getControl(PhysicsControl.class).reposition(despawn4);
                     getAudioPlayer().playSound("themesong.mp3");
 
                 });
@@ -168,6 +206,24 @@ public class MarioApp extends GameApplication {
                     player.getWorld();
                    // getGameWorld().spawn("enemy", 650, 50);
                     player.getControl(PhysicsControl.class).reposition(despawn);
+                    getAudioPlayer().playSound("themesong.mp3");
+
+                });
+
+            }
+        });
+
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DANGER2) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity danger2) {
+
+
+                FXGL.getAudioPlayer().stopAllSounds();
+                getAudioPlayer().playSound("die.wav");
+                getDisplay().showMessageBox("Game Over!", () -> {
+                    player.getWorld();
+                    // getGameWorld().spawn("enemy", 650, 50);
+                    player.getControl(PhysicsControl.class).reposition(despawn4);
                     getAudioPlayer().playSound("themesong.mp3");
 
                 });
