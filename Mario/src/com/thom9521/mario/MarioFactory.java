@@ -60,6 +60,23 @@ public class MarioFactory implements EntityFactory {
                 .build();
     }
 
+    @Spawns("enemy3") //Samme enemy som enemy 1, men bruges til at spawne player et andet sted.
+    public Entity newEnemy3(SpawnData data) {
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.DYNAMIC);
+
+        return Entities.builder()
+                .type(MarioType.ENEMY3)
+                .from(data)
+                //.viewFromNodeWithBBox(new Rectangle(30,30,Color.RED))
+                .viewFromTextureWithBBox("enemy.png")
+                .bbox(new HitBox(BoundingShape.box(20,25)))
+                .with(physics)
+                .with(new CollidableComponent(true))
+                .with(new EnemyControl())
+                .build();
+    }
+
     @Spawns("danger")
     public Entity newDanger(SpawnData data) {
         return Entities.builder()
