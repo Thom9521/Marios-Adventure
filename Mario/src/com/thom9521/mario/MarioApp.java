@@ -9,33 +9,50 @@ import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
+import com.almasb.fxgl.gameplay.GameState;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsControl;
+import com.almasb.fxgl.physics.box2d.common.JBoxSettings;
+import com.almasb.fxgl.physics.box2d.dynamics.contacts.Velocity;
 import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.ui.Position;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.DeserializationConfig;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.IgnoredPropertyException;
+import javafx.beans.property.IntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import jdk.jfr.Threshold;
 import org.jetbrains.annotations.NotNull;
+
 
 import java.awt.*;
 import java.sql.SQLOutput;
 import java.util.Map;
 
-import static com.almasb.fxgl.app.DSLKt.inc;
+import static com.almasb.fxgl.physics.box2d.common.JBoxSettings.*;
+import static javafx.scene.paint.Color.BLUE;
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MarioApp extends GameApplication {
 
     @Override
     protected void initSettings(GameSettings settings) {
         settings.setWidth(15 * 70);
         settings.setHeight(10 * 70);
+
     }
 
     private Entity player;
+
+
+
+
     Point2D despawn = new Point2D(50, 600);
     Point2D despawn4 = new Point2D(70, 235);
 
@@ -61,11 +78,12 @@ public class MarioApp extends GameApplication {
                 player.getControl(PlayerControl.class).jump();
             }
         }, KeyCode.UP);
+
     }
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario3.json");
+        getGameWorld().setLevelFromMap("mario.json");
         getAudioPlayer().playSound("themesong.mp3");
         //getGameScene().setBackgroundRepeat("mountains.jpg");
         player = getGameWorld().spawn("player", 70, 600);
@@ -75,8 +93,8 @@ public class MarioApp extends GameApplication {
         getGameWorld().spawn("enemy", 390, 240);
 
 
-
     }
+
 
     @Override
     protected void initPhysics() {
@@ -89,6 +107,12 @@ public class MarioApp extends GameApplication {
             }
         });
 
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.PLATFORM) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity platform) {
+                JBoxSettings.velocityThreshold = 0.1f;
+            }});
+
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR) {
             @Override
             protected void onCollisionBegin(Entity player, Entity door) {
@@ -97,7 +121,7 @@ public class MarioApp extends GameApplication {
                     getAudioPlayer().playSound("1-up.wav");
 
                     player.getWorld().setLevelFromMap("mario2.json");
-                     player.getWorld().spawn("player",90,900);
+                    player.getWorld().spawn("player",90,900);
                     getGameWorld().spawn("enemy", 1050, 50);
                     getGameWorld().spawn("enemy", 1485, 50);
                     player.getControl(PhysicsControl.class).reposition(despawn);
@@ -167,12 +191,24 @@ public class MarioApp extends GameApplication {
             protected void onCollisionBegin(Entity player, Entity enemy) {
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
-                getDisplay().showMessageBox("Game Over!", () -> {
+                getGameState().increment("lives",-1);
+                if (getGameState().getInt("lives") == 0){
+                    getDisplay().showMessageBox("Game over!", ()-> {
+                        player.getWorld().setLevelFromMap("mario.json");
+                        player.getControl(PhysicsControl.class).reposition(despawn);
+                        getGameWorld().spawn("enemy", 390, 240);
+                        getGameState().setValue("lives", 3);
+                        getGameState().setValue("score", 0);
+                        getAudioPlayer().playSound("themesong.mp3");
+                    });
+                }
+                else {
+                    getDisplay().showMessageBox("Try again!", () -> {
                     player.getWorld();
                     player.getControl(PhysicsControl.class).reposition(despawn);
                     getAudioPlayer().playSound("themesong.mp3");
-
                 });
+                }
 
             }
         });
@@ -184,15 +220,25 @@ public class MarioApp extends GameApplication {
 
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
-                getDisplay().showMessageBox("Game Over!", () -> {
-                    // player.getWorld().setLevelFromMap("mario.json");
-                    player.getWorld();
-                    // enemy.removeFromWorld();
-                    //getGameWorld().spawn("enemy", 650, 50);
-                    player.getControl(PhysicsControl.class).reposition(despawn4);
-                    getAudioPlayer().playSound("themesong.mp3");
-
-                });
+                getGameState().increment("lives",-1);
+                if (getGameState().getInt("lives") == 0){
+                    getDisplay().showMessageBox("Game over!", ()-> {
+                        player.getWorld().setLevelFromMap("mario.json");
+                        getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
+                        player.getControl(PhysicsControl.class).reposition(despawn);
+                        getGameWorld().spawn("enemy", 390, 240);
+                        getGameState().setValue("lives", 3);
+                        getGameState().setValue("score", 0);
+                        getAudioPlayer().playSound("themesong.mp3");
+                    });
+                }
+                else {
+                    getDisplay().showMessageBox("Try again!", () -> {
+                        player.getWorld();
+                        player.getControl(PhysicsControl.class).reposition(despawn4);
+                        getAudioPlayer().playSound("themesong.mp3");
+                    });
+                }
 
             }
         });
@@ -202,12 +248,24 @@ public class MarioApp extends GameApplication {
             protected void onCollisionBegin(Entity player, Entity enemy3) {
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
-                getDisplay().showMessageBox("Game Over!", () -> {
-                    player.getWorld();
-                    player.getControl(PhysicsControl.class).reposition(despawn4);
-                    getAudioPlayer().playSound("themesong.mp3");
-
-                });
+                getGameState().increment("lives",-1);
+                if (getGameState().getInt("lives") == 0){
+                    getDisplay().showMessageBox("Game over!", ()-> {
+                        player.getWorld().setLevelFromMap("mario.json");
+                        player.getControl(PhysicsControl.class).reposition(despawn);
+                        getGameWorld().spawn("enemy", 390, 240);
+                        getGameState().setValue("lives", 3);
+                        getGameState().setValue("score", 0);
+                        getAudioPlayer().playSound("themesong.mp3");
+                    });
+                }
+                else {
+                    getDisplay().showMessageBox("Try again!", () -> {
+                        player.getWorld();
+                        player.getControl(PhysicsControl.class).reposition(despawn4);
+                        getAudioPlayer().playSound("themesong.mp3");
+                    });
+                }
 
             }
         });
@@ -219,13 +277,24 @@ public class MarioApp extends GameApplication {
 
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
-                getDisplay().showMessageBox("Game Over!", () -> {
-                    player.getWorld();
-                   // getGameWorld().spawn("enemy", 650, 50);
-                    player.getControl(PhysicsControl.class).reposition(despawn);
-                    getAudioPlayer().playSound("themesong.mp3");
-
-                });
+                getGameState().increment("lives",-1);
+                if (getGameState().getInt("lives") == 0){
+                    getDisplay().showMessageBox("Game over!", ()-> {
+                        player.getWorld().setLevelFromMap("mario.json");
+                        player.getControl(PhysicsControl.class).reposition(despawn);
+                        getGameWorld().spawn("enemy", 390, 240);
+                        getGameState().setValue("lives", 3);
+                        getGameState().setValue("score", 0);
+                        getAudioPlayer().playSound("themesong.mp3");
+                    });
+                }
+                else {
+                    getDisplay().showMessageBox("Try again!", () -> {
+                        player.getWorld();
+                        player.getControl(PhysicsControl.class).reposition(despawn);
+                        getAudioPlayer().playSound("themesong.mp3");
+                    });
+                }
 
             }
         });
@@ -237,13 +306,25 @@ public class MarioApp extends GameApplication {
 
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
-                getDisplay().showMessageBox("Game Over!", () -> {
-                    player.getWorld();
-                    // getGameWorld().spawn("enemy", 650, 50);
-                    player.getControl(PhysicsControl.class).reposition(despawn4);
-                    getAudioPlayer().playSound("themesong.mp3");
-
-                });
+                getGameState().increment("lives",-1);
+                if (getGameState().getInt("lives") == 0){
+                    getDisplay().showMessageBox("Game over!", ()-> {
+                        player.getWorld().setLevelFromMap("mario.json");
+                        getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
+                        player.getControl(PhysicsControl.class).reposition(despawn);
+                        getGameWorld().spawn("enemy", 390, 240);
+                        getGameState().setValue("lives", 3);
+                        getGameState().setValue("score", 0);
+                        getAudioPlayer().playSound("themesong.mp3");
+                    });
+                }
+                else {
+                    getDisplay().showMessageBox("Try again!", () -> {
+                        player.getWorld();
+                        player.getControl(PhysicsControl.class).reposition(despawn4);
+                        getAudioPlayer().playSound("themesong.mp3");
+                    });
+                }
 
             }
         });
@@ -253,23 +334,35 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initUI() {
-        Text uiScore = getUIFactory().newText("",50);
+        Text uiScore = getUIFactory().newText("Score",50);
+
         uiScore.setTranslateX(getWidth()-1000);
         uiScore.setTranslateY(50);
         uiScore.fillProperty().bind(getGameState().objectProperty("stageColor"));
         uiScore.textProperty().bind(getGameState().intProperty("score").asString());
 
+        Text uiLives = getUIFactory().newText("Lives",50);
+        uiLives.setTranslateX(getWidth()-1000);
+        uiLives.setTranslateY(150);
+        uiLives.fillProperty().bind(getGameState().objectProperty("stageColorL"));
+        uiLives.textProperty().bind(getGameState().intProperty("lives").asString());
+
         getGameScene().addUINode(uiScore);
+        getGameScene().addUINode(uiLives);
     }
       @Override
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("stageColor", Color.GOLD);
         vars.put("score", 0);
+
+        vars.put("stageColorL", Color.RED);
+        vars.put("lives", 3);
     }
+
+
 
 
     public static void main(String[] args) {
         launch(args);
 
-    }
-}
+    }}

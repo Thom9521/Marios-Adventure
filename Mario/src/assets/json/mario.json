@@ -23,8 +23,8 @@
                  "type":"coin",
                  "visible":true,
                  "width":29.8375,
-                 "x":406.437773803984,
-                 "y":412.770391983614
+                 "x":404.944121824896,
+                 "y":411.276740004525
                 }, 
                 {
                  "height":30.5901,
@@ -263,7 +263,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":52,
+ "nextobjectid":59,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.1",
