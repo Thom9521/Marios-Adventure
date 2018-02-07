@@ -14,8 +14,10 @@ import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsControl;
 import com.almasb.fxgl.physics.box2d.common.JBoxSettings;
+import com.almasb.fxgl.physics.box2d.common.JBoxUtils;
 import com.almasb.fxgl.physics.box2d.dynamics.contacts.Velocity;
 import com.almasb.fxgl.settings.GameSettings;
+import com.almasb.fxgl.texture.Texture;
 import com.almasb.fxgl.ui.Position;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.DeserializationConfig;
@@ -91,6 +93,8 @@ public class MarioApp extends GameApplication {
         getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
 
         getGameWorld().spawn("enemy", 390, 240);
+
+        JBoxSettings.velocityThreshold = 0f;
 
 
     }
@@ -335,20 +339,28 @@ public class MarioApp extends GameApplication {
     @Override
     protected void initUI() {
         Text uiScore = getUIFactory().newText("Score",50);
-
-        uiScore.setTranslateX(getWidth()-1000);
-        uiScore.setTranslateY(50);
+        uiScore.setTranslateX(getWidth()-960);
+        uiScore.setTranslateY(70);
         uiScore.fillProperty().bind(getGameState().objectProperty("stageColor"));
         uiScore.textProperty().bind(getGameState().intProperty("score").asString());
+        getGameScene().addUINode(uiScore);
 
         Text uiLives = getUIFactory().newText("Lives",50);
-        uiLives.setTranslateX(getWidth()-1000);
+        uiLives.setTranslateX(getWidth()-960);
         uiLives.setTranslateY(150);
         uiLives.fillProperty().bind(getGameState().objectProperty("stageColorL"));
         uiLives.textProperty().bind(getGameState().intProperty("lives").asString());
-
-        getGameScene().addUINode(uiScore);
         getGameScene().addUINode(uiLives);
+
+        Texture scoreTexture = getAssetLoader().loadTexture("marioCoinBig.png");
+        scoreTexture.setTranslateX(getWidth()-1030);
+        scoreTexture.setTranslateY(25);
+        getGameScene().addUINode(scoreTexture);
+
+        Texture livesTexture = getAssetLoader().loadTexture("heart.png");
+        livesTexture.setTranslateX(getWidth()-1030);
+        livesTexture.setTranslateY(105);
+        getGameScene().addUINode(livesTexture);
     }
       @Override
     protected void initGameVars(Map<String, Object> vars) {
