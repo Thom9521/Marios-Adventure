@@ -22,8 +22,8 @@ public class PlayerControl extends Control {
 
     public PlayerControl(){
 
-        animIdle = new AnimationChannel("dude.png", 4, 32, 42, Duration.seconds(1),1,1);
-        animWalk = new AnimationChannel("dude.png", 4, 32, 42, Duration.seconds(1),0,3);
+        animIdle = new AnimationChannel("cat.png", 4, 30, 40, Duration.seconds(1),1,1);
+        animWalk = new AnimationChannel("cat.png", 4, 30, 40, Duration.seconds(1),0,3);
 
         texture = new AnimatedTexture(animIdle);
 

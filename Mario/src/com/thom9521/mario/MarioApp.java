@@ -67,7 +67,7 @@ public class MarioApp extends GameApplication {
     protected void initGame() {
         getGameWorld().setLevelFromMap("mario3.json");
         getAudioPlayer().playSound("themesong.mp3");
-
+        //getGameScene().setBackgroundRepeat("mountains.jpg");
         player = getGameWorld().spawn("player", 70, 600);
         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
         getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
@@ -116,7 +116,7 @@ public class MarioApp extends GameApplication {
                     getAudioPlayer().playSound("1-up.wav");
                     player.getWorld().setLevelFromMap("mario3.json");
                     player.getControl(PhysicsControl.class).reposition(despawn);
-                    getGameWorld().spawn("enemy", 390, 600);
+                    getGameWorld().spawn("enemy", 290, 600);
 
 
 
@@ -253,7 +253,7 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initUI() {
-        Text uiScore = getUIFactory().newText("Score:",50);
+        Text uiScore = getUIFactory().newText("",50);
         uiScore.setTranslateX(getWidth()-1000);
         uiScore.setTranslateY(50);
         uiScore.fillProperty().bind(getGameState().objectProperty("stageColor"));
