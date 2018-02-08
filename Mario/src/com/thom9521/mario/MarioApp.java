@@ -1,4 +1,4 @@
-package com.thom9521.doraemon;
+package com.thom9521.mario;
 
 
 import com.almasb.fxgl.app.FXGL;
@@ -22,13 +22,13 @@ import java.util.Map;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DoraemonApp extends GameApplication {
+public class MarioApp extends GameApplication {
 
     @Override
     protected void initSettings(GameSettings settings) {
         settings.setWidth(15 * 70);
         settings.setHeight(10 * 70);
-        settings.setTitle("Doraemons Adventure");
+        settings.setTitle("Marios Adventure");
         settings.setVersion("1.0");
 
     }
@@ -68,7 +68,7 @@ public class DoraemonApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("doraemon.json");
+        getGameWorld().setLevelFromMap("mario.json");
         getAudioPlayer().playMusic("themesong.mp3");
         getGameScene().setBackgroundRepeat("forrest.png");
         player = getGameWorld().spawn("player", 70, 600);
@@ -85,7 +85,7 @@ public class DoraemonApp extends GameApplication {
 
     @Override
     protected void initPhysics() {
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.COIN) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.COIN) {
             @Override
             protected void onCollisionBegin(Entity player, Entity coin) {
                 coin.removeFromWorld();
@@ -94,7 +94,7 @@ public class DoraemonApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.CHEST) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.CHEST) {
             @Override
             protected void onCollisionBegin(Entity player, Entity chest) {
                 chest.removeFromWorld();
@@ -103,7 +103,7 @@ public class DoraemonApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.HEART) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.HEART) {
             @Override
             protected void onCollisionBegin(Entity player, Entity heart) {
                 heart.removeFromWorld();
@@ -112,20 +112,20 @@ public class DoraemonApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.PLATFORM) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.PLATFORM) {
             @Override
             protected void onCollisionBegin(Entity player, Entity platform) {
                 JBoxSettings.velocityThreshold = 0.1f;
             }});
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.DOOR) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR) {
             @Override
             protected void onCollisionBegin(Entity player, Entity door) {
                 getDisplay().showMessageBox("Level 1 Complete!", () -> {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
 
-                    player.getWorld().setLevelFromMap("doraemon2.json");
+                    player.getWorld().setLevelFromMap("mario2.json");
                     getGameScene().setBackgroundRepeat("mountains.jpg");
                     player.getWorld().spawn("player",90,900);
                     getGameWorld().spawn("enemy", 1050, 50);
@@ -138,13 +138,13 @@ public class DoraemonApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.DOOR2) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR2) {
             @Override
             protected void onCollisionBegin(Entity player, Entity door2) {
                 getDisplay().showMessageBox("Level 2 Complete!", () -> {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
-                    player.getWorld().setLevelFromMap("doraemon3.json");
+                    player.getWorld().setLevelFromMap("mario3.json");
                     getGameScene().setBackgroundRepeat("jungle.png");
                     player.getControl(PhysicsControl.class).reposition(despawn);
                     getGameWorld().spawn("enemy", 290, 600);
@@ -156,13 +156,13 @@ public class DoraemonApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.DOOR3) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR3) {
             @Override
             protected void onCollisionBegin(Entity player, Entity door3) {
                 getDisplay().showMessageBox("Level 3 Complete!", () -> {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
-                    player.getWorld().setLevelFromMap("doraemon4.json");
+                    player.getWorld().setLevelFromMap("mario4.json");
                     getGameScene().setBackgroundRepeat("iceland.jpg");
                     getGameScene().getViewport().setBounds(-1500, 0, 3000, 1050);
                     getGameWorld().spawn("enemy3", 450, 235);
@@ -179,7 +179,7 @@ public class DoraemonApp extends GameApplication {
 
             }
         });
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.DOOR4) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR4) {
             @Override
             protected void onCollisionBegin(Entity player, Entity door4) {
                 FXGL.getAudioPlayer().stopAllMusic();
@@ -199,7 +199,7 @@ public class DoraemonApp extends GameApplication {
             }getDisplay().showMessageBox("Level 4 Complete!", () -> {}); }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.ENEMY) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY) {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy) {
                 FXGL.getAudioPlayer().stopAllMusic();
@@ -208,7 +208,7 @@ public class DoraemonApp extends GameApplication {
                 getGameState().increment("lives",-1);
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
-                        player.getWorld().setLevelFromMap("doraemon.json");
+                        player.getWorld().setLevelFromMap("mario.json");
                         getGameScene().setBackgroundRepeat("forrest.png");
                         player.getControl(PhysicsControl.class).reposition(despawn);
                         getGameWorld().spawn("enemy", 390, 240);
@@ -228,7 +228,7 @@ public class DoraemonApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.ENEMY2) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY2) {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy2) {
 
@@ -238,7 +238,7 @@ public class DoraemonApp extends GameApplication {
                 getGameState().increment("lives",-1);
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
-                        player.getWorld().setLevelFromMap("doraemon.json");
+                        player.getWorld().setLevelFromMap("mario.json");
                         getGameScene().setBackgroundRepeat("forrest.png");
                         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
                         player.getControl(PhysicsControl.class).reposition(despawn);
@@ -259,7 +259,7 @@ public class DoraemonApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.ENEMY3) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY3) {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy3) {
                 FXGL.getAudioPlayer().stopAllMusic();
@@ -268,7 +268,7 @@ public class DoraemonApp extends GameApplication {
                 getGameState().increment("lives",-1);
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
-                        player.getWorld().setLevelFromMap("doraemon.json");
+                        player.getWorld().setLevelFromMap("mario.json");
                         getGameScene().setBackgroundRepeat("forrest.png");
                         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
                         player.getControl(PhysicsControl.class).reposition(despawn);
@@ -289,7 +289,7 @@ public class DoraemonApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.DANGER) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DANGER) {
             @Override
             protected void onCollisionBegin(Entity player, Entity danger) {
 
@@ -299,7 +299,7 @@ public class DoraemonApp extends GameApplication {
                 getGameState().increment("lives",-1);
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
-                        player.getWorld().setLevelFromMap("doraemon.json");
+                        player.getWorld().setLevelFromMap("mario.json");
                         getGameScene().setBackgroundRepeat("forrest.png");
                         player.getControl(PhysicsControl.class).reposition(despawn);
                         getGameWorld().spawn("enemy", 390, 240);
@@ -319,7 +319,7 @@ public class DoraemonApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.DANGER2) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DANGER2) {
             @Override
             protected void onCollisionBegin(Entity player, Entity danger2) {
                 FXGL.getAudioPlayer().stopAllMusic();
@@ -328,7 +328,7 @@ public class DoraemonApp extends GameApplication {
                 getGameState().increment("lives",-1);
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
-                        player.getWorld().setLevelFromMap("doraemon.json");
+                        player.getWorld().setLevelFromMap("mario.json");
                         getGameScene().setBackgroundRepeat("forrest.png");
                         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
                         player.getControl(PhysicsControl.class).reposition(despawn);
