@@ -22,14 +22,14 @@ import java.util.Map;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MarioApp extends GameApplication {
+public class DoraemonApp extends GameApplication {
 
     @Override
     protected void initSettings(GameSettings settings) {
         settings.setWidth(15 * 70);
         settings.setHeight(10 * 70);
-        settings.setTitle("Mario");
-        settings.setVersion("v2");
+        settings.setTitle("Doraemons Adventure");
+        settings.setVersion("1.0");
 
     }
 
@@ -68,7 +68,7 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario3.json");
+        getGameWorld().setLevelFromMap("mario.json");
         getAudioPlayer().playMusic("themesong.mp3");
         getGameScene().setBackgroundRepeat("forrest.png");
         player = getGameWorld().spawn("player", 70, 600);
@@ -85,7 +85,7 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initPhysics() {
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.COIN) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.COIN) {
             @Override
             protected void onCollisionBegin(Entity player, Entity coin) {
                 coin.removeFromWorld();
@@ -94,7 +94,7 @@ public class MarioApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.CHEST) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.CHEST) {
             @Override
             protected void onCollisionBegin(Entity player, Entity chest) {
                 chest.removeFromWorld();
@@ -103,7 +103,7 @@ public class MarioApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.HEART) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.HEART) {
             @Override
             protected void onCollisionBegin(Entity player, Entity heart) {
                 heart.removeFromWorld();
@@ -112,13 +112,13 @@ public class MarioApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.PLATFORM) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.PLATFORM) {
             @Override
             protected void onCollisionBegin(Entity player, Entity platform) {
                 JBoxSettings.velocityThreshold = 0.1f;
             }});
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.DOOR) {
             @Override
             protected void onCollisionBegin(Entity player, Entity door) {
                 getDisplay().showMessageBox("Level 1 Complete!", () -> {
@@ -138,7 +138,7 @@ public class MarioApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR2) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.DOOR2) {
             @Override
             protected void onCollisionBegin(Entity player, Entity door2) {
                 getDisplay().showMessageBox("Level 2 Complete!", () -> {
@@ -156,7 +156,7 @@ public class MarioApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR3) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.DOOR3) {
             @Override
             protected void onCollisionBegin(Entity player, Entity door3) {
                 getDisplay().showMessageBox("Level 3 Complete!", () -> {
@@ -179,7 +179,7 @@ public class MarioApp extends GameApplication {
 
             }
         });
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR4) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.DOOR4) {
             @Override
             protected void onCollisionBegin(Entity player, Entity door4) {
                 FXGL.getAudioPlayer().stopAllMusic();
@@ -199,7 +199,7 @@ public class MarioApp extends GameApplication {
             }getDisplay().showMessageBox("Level 4 Complete!", () -> {}); }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.ENEMY) {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy) {
                 FXGL.getAudioPlayer().stopAllMusic();
@@ -228,7 +228,7 @@ public class MarioApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY2) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.ENEMY2) {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy2) {
 
@@ -259,7 +259,7 @@ public class MarioApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY3) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.ENEMY3) {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy3) {
                 FXGL.getAudioPlayer().stopAllMusic();
@@ -289,7 +289,7 @@ public class MarioApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DANGER) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.DANGER) {
             @Override
             protected void onCollisionBegin(Entity player, Entity danger) {
 
@@ -319,7 +319,7 @@ public class MarioApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DANGER2) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(DoraemonType.PLAYER, DoraemonType.DANGER2) {
             @Override
             protected void onCollisionBegin(Entity player, Entity danger2) {
                 FXGL.getAudioPlayer().stopAllMusic();
