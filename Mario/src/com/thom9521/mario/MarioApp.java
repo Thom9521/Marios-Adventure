@@ -70,7 +70,7 @@ public class MarioApp extends GameApplication {
     protected void initGame() {
         getGameWorld().setLevelFromMap("mario.json");
         getAudioPlayer().playSound("themesong.mp3");
-        getGameScene().setBackgroundRepeat("mountains.jpg");
+        getGameScene().setBackgroundRepeat("jungle.png");
         player = getGameWorld().spawn("player", 70, 600);
         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
         getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
@@ -107,6 +107,7 @@ public class MarioApp extends GameApplication {
                     getAudioPlayer().playSound("1-up.wav");
 
                     player.getWorld().setLevelFromMap("mario2.json");
+                    getGameScene().setBackgroundRepeat("mountains.jpg");
                     player.getWorld().spawn("player",90,900);
                     getGameWorld().spawn("enemy", 1050, 50);
                     getGameWorld().spawn("enemy", 1485, 50);
@@ -125,6 +126,7 @@ public class MarioApp extends GameApplication {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
                     player.getWorld().setLevelFromMap("mario3.json");
+                    getGameScene().setBackgroundRepeat("forrest.png");
                     player.getControl(PhysicsControl.class).reposition(despawn);
                     getGameWorld().spawn("enemy", 290, 600);
 
@@ -142,6 +144,7 @@ public class MarioApp extends GameApplication {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
                     player.getWorld().setLevelFromMap("mario4.json");
+                    getGameScene().setBackgroundRepeat("iceland.jpg");
                     getGameScene().getViewport().setBounds(-1500, 0, 3000, 1050);
                     getGameWorld().spawn("enemy3", 450, 235);
                     getGameWorld().spawn("enemy3",570, 235);
