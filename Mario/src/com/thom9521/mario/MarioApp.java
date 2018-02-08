@@ -70,7 +70,7 @@ public class MarioApp extends GameApplication {
     protected void initGame() {
         getGameWorld().setLevelFromMap("mario.json");
         getAudioPlayer().playMusic("themesong.mp3");
-        getGameScene().setBackgroundRepeat("jungle.png");
+        getGameScene().setBackgroundRepeat("forrest.png");
         player = getGameWorld().spawn("player", 70, 600);
         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
         getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
@@ -145,7 +145,7 @@ public class MarioApp extends GameApplication {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
                     player.getWorld().setLevelFromMap("mario3.json");
-                    getGameScene().setBackgroundRepeat("forrest.png");
+                    getGameScene().setBackgroundRepeat("jungle.png");
                     player.getControl(PhysicsControl.class).reposition(despawn);
                     getGameWorld().spawn("enemy", 290, 600);
 
