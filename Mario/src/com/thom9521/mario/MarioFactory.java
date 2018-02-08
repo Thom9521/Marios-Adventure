@@ -155,17 +155,31 @@ public class MarioFactory implements EntityFactory {
         return Entities.builder()
                 .type(MarioType.COIN)
                 .from(data)
-                //.viewFromNodeWithBBox(new Circle(data.<Integer>get("width") / 2, Color.GOLD))
                 .viewFromTextureWithBBox("marioCoin.png")
                 .bbox(new HitBox(BoundingShape.box(25,28)))
                 .with(new CollidableComponent(true))
                 .build();
     }
-    @Spawns("background")
-    public Entity newBackground(SpawnData data) {
-        return Entities.builder()
-                .type(MarioType.BACKGROUND)
-                .from(data)
 
+    @Spawns("chest")
+    public Entity newChest(SpawnData data) {
+        return Entities.builder()
+                .type(MarioType.CHEST)
+                .from(data)
+                .viewFromTextureWithBBox("chest.png")
+                .bbox(new HitBox(BoundingShape.box(25,28)))
+                .with(new CollidableComponent(true))
                 .build();
-}}
+    }
+
+    @Spawns("heart")
+    public Entity newHeart(SpawnData data) {
+        return Entities.builder()
+                .type(MarioType.HEART)
+                .from(data)
+                .viewFromTextureWithBBox("marioHeart.png")
+                .bbox(new HitBox(BoundingShape.box(25,28)))
+                .with(new CollidableComponent(true))
+                .build();
+    }
+    }

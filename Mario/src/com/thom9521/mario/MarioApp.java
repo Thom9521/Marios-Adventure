@@ -69,14 +69,15 @@ public class MarioApp extends GameApplication {
     @Override
     protected void initGame() {
         getGameWorld().setLevelFromMap("mario.json");
-        getAudioPlayer().playSound("themesong.mp3");
+        getAudioPlayer().playMusic("themesong.mp3");
         getGameScene().setBackgroundRepeat("jungle.png");
         player = getGameWorld().spawn("player", 70, 600);
         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
         getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
-
         getGameWorld().spawn("enemy", 390, 240);
 
+        getAudioPlayer().setGlobalMusicVolume(0.1);
+        getAudioPlayer().setGlobalSoundVolume(1);
 
 
     }
@@ -90,6 +91,24 @@ public class MarioApp extends GameApplication {
                 coin.removeFromWorld();
                 getGameState().increment("score",+50);
                 getAudioPlayer().playSound("coin.wav");
+            }
+        });
+
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.CHEST) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity chest) {
+                chest.removeFromWorld();
+                getGameState().increment("score",+1000);
+                getAudioPlayer().playSound("chest.wav");
+            }
+        });
+
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.HEART) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity heart) {
+                heart.removeFromWorld();
+                getGameState().increment("lives",+1);
+                getAudioPlayer().playSound("heart.wav");
             }
         });
 
@@ -163,10 +182,11 @@ public class MarioApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR4) {
             @Override
             protected void onCollisionBegin(Entity player, Entity door4) {
+                FXGL.getAudioPlayer().stopAllMusic();
                 FXGL.getAudioPlayer().stopAllSounds();
-                getAudioPlayer().playSound("dothemario.mp3");
-
-                if (getGameState().getInt("score")== 2150){
+                getAudioPlayer().setGlobalMusicVolume(100);
+                getAudioPlayer().playMusic("dothemario.mp3");
+                if (getGameState().getInt("score")== 3150){
                 getDisplay().showMessageBox("THE END! \n\nYou got the highest score possible! GJ!", () -> {
                     System.out.println("Dialog Closed!");
                 }); }else {
@@ -182,6 +202,7 @@ public class MarioApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY) {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy) {
+                FXGL.getAudioPlayer().stopAllMusic();
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
                 getGameState().increment("lives",-1);
@@ -192,14 +213,14 @@ public class MarioApp extends GameApplication {
                         getGameWorld().spawn("enemy", 390, 240);
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
-                        getAudioPlayer().playSound("themesong.mp3");
+                        getAudioPlayer().playMusic("themesong.mp3");
                     });
                 }
                 else {
                     getDisplay().showMessageBox("Try again!", () -> {
                     player.getWorld();
                     player.getControl(PhysicsControl.class).reposition(despawn);
-                    getAudioPlayer().playSound("themesong.mp3");
+                        getAudioPlayer().playMusic("themesong.mp3");
                 });
                 }
 
@@ -210,7 +231,7 @@ public class MarioApp extends GameApplication {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy2) {
 
-
+                FXGL.getAudioPlayer().stopAllMusic();
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
                 getGameState().increment("lives",-1);
@@ -222,14 +243,14 @@ public class MarioApp extends GameApplication {
                         getGameWorld().spawn("enemy", 390, 240);
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
-                        getAudioPlayer().playSound("themesong.mp3");
+                        getAudioPlayer().playMusic("themesong.mp3");
                     });
                 }
                 else {
                     getDisplay().showMessageBox("Try again!", () -> {
                         player.getWorld();
                         player.getControl(PhysicsControl.class).reposition(despawn4);
-                        getAudioPlayer().playSound("themesong.mp3");
+                        getAudioPlayer().playMusic("themesong.mp3");
                     });
                 }
 
@@ -239,6 +260,7 @@ public class MarioApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY3) {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy3) {
+                FXGL.getAudioPlayer().stopAllMusic();
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
                 getGameState().increment("lives",-1);
@@ -250,14 +272,14 @@ public class MarioApp extends GameApplication {
                         getGameWorld().spawn("enemy", 390, 240);
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
-                        getAudioPlayer().playSound("themesong.mp3");
+                        getAudioPlayer().playMusic("themesong.mp3");
                     });
                 }
                 else {
                     getDisplay().showMessageBox("Try again!", () -> {
                         player.getWorld();
                         player.getControl(PhysicsControl.class).reposition(despawn4);
-                        getAudioPlayer().playSound("themesong.mp3");
+                        getAudioPlayer().playMusic("themesong.mp3");
                     });
                 }
 
@@ -268,7 +290,7 @@ public class MarioApp extends GameApplication {
             @Override
             protected void onCollisionBegin(Entity player, Entity danger) {
 
-
+                FXGL.getAudioPlayer().stopAllMusic();
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
                 getGameState().increment("lives",-1);
@@ -279,14 +301,14 @@ public class MarioApp extends GameApplication {
                         getGameWorld().spawn("enemy", 390, 240);
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
-                        getAudioPlayer().playSound("themesong.mp3");
+                        getAudioPlayer().playMusic("themesong.mp3");
                     });
                 }
                 else {
                     getDisplay().showMessageBox("Try again!", () -> {
                         player.getWorld();
                         player.getControl(PhysicsControl.class).reposition(despawn);
-                        getAudioPlayer().playSound("themesong.mp3");
+                        getAudioPlayer().playMusic("themesong.mp3");
                     });
                 }
 
@@ -296,7 +318,7 @@ public class MarioApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DANGER2) {
             @Override
             protected void onCollisionBegin(Entity player, Entity danger2) {
-
+                FXGL.getAudioPlayer().stopAllMusic();
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
                 getGameState().increment("lives",-1);
@@ -308,14 +330,14 @@ public class MarioApp extends GameApplication {
                         getGameWorld().spawn("enemy", 390, 240);
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
-                        getAudioPlayer().playSound("themesong.mp3");
+                        getAudioPlayer().playMusic("themesong.mp3");
                     });
                 }
                 else {
                     getDisplay().showMessageBox("Try again!", () -> {
                         player.getWorld();
                         player.getControl(PhysicsControl.class).reposition(despawn4);
-                        getAudioPlayer().playSound("themesong.mp3");
+                        getAudioPlayer().playMusic("themesong.mp3");
                     });
                 }
 
