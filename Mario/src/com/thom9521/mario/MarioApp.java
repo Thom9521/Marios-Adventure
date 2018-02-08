@@ -68,7 +68,7 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario.json");
+        getGameWorld().setLevelFromMap("mario3.json");
         getAudioPlayer().playMusic("themesong.mp3");
         getGameScene().setBackgroundRepeat("forrest.png");
         player = getGameWorld().spawn("player", 70, 600);
@@ -186,7 +186,7 @@ public class MarioApp extends GameApplication {
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().setGlobalMusicVolume(100);
                 getAudioPlayer().playMusic("dothemario.mp3");
-                if (getGameState().getInt("score")== 3150){
+                if (getGameState().getInt("score")== 3200){
                 getDisplay().showMessageBox("THE END! \n\nYou got the highest score possible! GJ!", () -> {
                     System.out.println("Dialog Closed!");
                 }); }else {
@@ -386,9 +386,6 @@ public class MarioApp extends GameApplication {
         vars.put("stageColorL", Color.RED);
         vars.put("lives", 3);
     }
-
-
-
 
     public static void main(String[] args) {
         launch(args);
