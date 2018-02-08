@@ -1,4 +1,4 @@
-package com.thom9521.mario;
+package com.thom9521.doraemon;
 
 
 import com.almasb.fxgl.app.FXGL;
@@ -68,7 +68,7 @@ public class DoraemonApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario.json");
+        getGameWorld().setLevelFromMap("doraemon.json");
         getAudioPlayer().playMusic("themesong.mp3");
         getGameScene().setBackgroundRepeat("forrest.png");
         player = getGameWorld().spawn("player", 70, 600);
@@ -125,7 +125,7 @@ public class DoraemonApp extends GameApplication {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
 
-                    player.getWorld().setLevelFromMap("mario2.json");
+                    player.getWorld().setLevelFromMap("doraemon2.json");
                     getGameScene().setBackgroundRepeat("mountains.jpg");
                     player.getWorld().spawn("player",90,900);
                     getGameWorld().spawn("enemy", 1050, 50);
@@ -144,7 +144,7 @@ public class DoraemonApp extends GameApplication {
                 getDisplay().showMessageBox("Level 2 Complete!", () -> {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
-                    player.getWorld().setLevelFromMap("mario3.json");
+                    player.getWorld().setLevelFromMap("doraemon3.json");
                     getGameScene().setBackgroundRepeat("jungle.png");
                     player.getControl(PhysicsControl.class).reposition(despawn);
                     getGameWorld().spawn("enemy", 290, 600);
@@ -162,7 +162,7 @@ public class DoraemonApp extends GameApplication {
                 getDisplay().showMessageBox("Level 3 Complete!", () -> {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
-                    player.getWorld().setLevelFromMap("mario4.json");
+                    player.getWorld().setLevelFromMap("doraemon4.json");
                     getGameScene().setBackgroundRepeat("iceland.jpg");
                     getGameScene().getViewport().setBounds(-1500, 0, 3000, 1050);
                     getGameWorld().spawn("enemy3", 450, 235);
@@ -208,7 +208,7 @@ public class DoraemonApp extends GameApplication {
                 getGameState().increment("lives",-1);
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
-                        player.getWorld().setLevelFromMap("mario.json");
+                        player.getWorld().setLevelFromMap("doraemon.json");
                         getGameScene().setBackgroundRepeat("forrest.png");
                         player.getControl(PhysicsControl.class).reposition(despawn);
                         getGameWorld().spawn("enemy", 390, 240);
@@ -238,7 +238,7 @@ public class DoraemonApp extends GameApplication {
                 getGameState().increment("lives",-1);
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
-                        player.getWorld().setLevelFromMap("mario.json");
+                        player.getWorld().setLevelFromMap("doraemon.json");
                         getGameScene().setBackgroundRepeat("forrest.png");
                         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
                         player.getControl(PhysicsControl.class).reposition(despawn);
@@ -268,7 +268,7 @@ public class DoraemonApp extends GameApplication {
                 getGameState().increment("lives",-1);
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
-                        player.getWorld().setLevelFromMap("mario.json");
+                        player.getWorld().setLevelFromMap("doraemon.json");
                         getGameScene().setBackgroundRepeat("forrest.png");
                         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
                         player.getControl(PhysicsControl.class).reposition(despawn);
@@ -299,7 +299,7 @@ public class DoraemonApp extends GameApplication {
                 getGameState().increment("lives",-1);
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
-                        player.getWorld().setLevelFromMap("mario.json");
+                        player.getWorld().setLevelFromMap("doraemon.json");
                         getGameScene().setBackgroundRepeat("forrest.png");
                         player.getControl(PhysicsControl.class).reposition(despawn);
                         getGameWorld().spawn("enemy", 390, 240);
@@ -328,7 +328,7 @@ public class DoraemonApp extends GameApplication {
                 getGameState().increment("lives",-1);
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
-                        player.getWorld().setLevelFromMap("mario.json");
+                        player.getWorld().setLevelFromMap("doraemon.json");
                         getGameScene().setBackgroundRepeat("forrest.png");
                         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
                         player.getControl(PhysicsControl.class).reposition(despawn);

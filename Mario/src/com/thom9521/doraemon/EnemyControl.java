@@ -1,4 +1,4 @@
-package com.thom9521.mario;
+package com.thom9521.doraemon;
 
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.Control;
