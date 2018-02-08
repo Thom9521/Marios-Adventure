@@ -1,4 +1,6 @@
-# Bunden Forudsætning: Et Spil
-Første bunden forudsætning på 2. semester, hvor opgaven går på at kode et spil. Spillet programmeres vha. tutorials og inspiration på FXGL.
+# Bunden Forudsætning - Spiludvikling
 
 ![Alt Eksempel:](https://github.com/Thom9521/Mario-V2/blob/master/Mario/src/assets/textures/Eksempel2.png)
+
+## Mario V2
+Velkommen til Mario V2. Spillet er programmeret i sammenhængede med den første bunden forudsætning på 2. semester som datamatiker. 
