@@ -190,7 +190,7 @@ public class MarioApp extends GameApplication {
                 getDisplay().showMessageBox("THE END! \n\nYou got the highest score possible! GJ!", () -> {
                     System.out.println("Dialog Closed!");
                 }); }else {
-                getDisplay().showMessageBox("THE END! \n\nBut seems like you misses some coins! \n\nTry again to" +
+                getDisplay().showMessageBox("THE END! \n\nBut seems like you missed some coins! \n\nTry again to" +
                         " get all of them!", () -> {
                     System.out.println("Dialog Closed!");
 
@@ -209,6 +209,7 @@ public class MarioApp extends GameApplication {
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
                         player.getWorld().setLevelFromMap("mario.json");
+                        getGameScene().setBackgroundRepeat("forrest.png");
                         player.getControl(PhysicsControl.class).reposition(despawn);
                         getGameWorld().spawn("enemy", 390, 240);
                         getGameState().setValue("lives", 3);
@@ -238,6 +239,7 @@ public class MarioApp extends GameApplication {
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
                         player.getWorld().setLevelFromMap("mario.json");
+                        getGameScene().setBackgroundRepeat("forrest.png");
                         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
                         player.getControl(PhysicsControl.class).reposition(despawn);
                         getGameWorld().spawn("enemy", 390, 240);
@@ -267,6 +269,7 @@ public class MarioApp extends GameApplication {
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
                         player.getWorld().setLevelFromMap("mario.json");
+                        getGameScene().setBackgroundRepeat("forrest.png");
                         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
                         player.getControl(PhysicsControl.class).reposition(despawn);
                         getGameWorld().spawn("enemy", 390, 240);
@@ -297,6 +300,7 @@ public class MarioApp extends GameApplication {
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
                         player.getWorld().setLevelFromMap("mario.json");
+                        getGameScene().setBackgroundRepeat("forrest.png");
                         player.getControl(PhysicsControl.class).reposition(despawn);
                         getGameWorld().spawn("enemy", 390, 240);
                         getGameState().setValue("lives", 3);
@@ -325,6 +329,7 @@ public class MarioApp extends GameApplication {
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
                         player.getWorld().setLevelFromMap("mario.json");
+                        getGameScene().setBackgroundRepeat("forrest.png");
                         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
                         player.getControl(PhysicsControl.class).reposition(despawn);
                         getGameWorld().spawn("enemy", 390, 240);
