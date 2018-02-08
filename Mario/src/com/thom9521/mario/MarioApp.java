@@ -2,43 +2,24 @@ package com.thom9521.mario;
 
 
 import com.almasb.fxgl.app.FXGL;
-import com.almasb.fxgl.app.FXGLExceptionHandler;
 import com.almasb.fxgl.app.GameApplication;
-import com.almasb.fxgl.audio.AudioPlayer;
-import com.almasb.fxgl.audio.Music;
-import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.SpawnData;
-import com.almasb.fxgl.gameplay.GameState;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsControl;
 import com.almasb.fxgl.physics.box2d.common.JBoxSettings;
-import com.almasb.fxgl.physics.box2d.common.JBoxUtils;
-import com.almasb.fxgl.physics.box2d.dynamics.contacts.Velocity;
 import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.texture.Texture;
-import com.almasb.fxgl.ui.Position;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.DeserializationConfig;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.exc.IgnoredPropertyException;
-import javafx.beans.property.IntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Background;
+
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import jdk.jfr.Threshold;
-import org.jetbrains.annotations.NotNull;
 
-
-import java.awt.*;
-import java.sql.SQLOutput;
 import java.util.Map;
 
-import static com.almasb.fxgl.physics.box2d.common.JBoxSettings.*;
-import static javafx.scene.paint.Color.BLUE;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MarioApp extends GameApplication {
@@ -47,6 +28,8 @@ public class MarioApp extends GameApplication {
     protected void initSettings(GameSettings settings) {
         settings.setWidth(15 * 70);
         settings.setHeight(10 * 70);
+        settings.setTitle("Mario");
+        settings.setVersion("v2");
 
     }
 
@@ -87,14 +70,13 @@ public class MarioApp extends GameApplication {
     protected void initGame() {
         getGameWorld().setLevelFromMap("mario.json");
         getAudioPlayer().playSound("themesong.mp3");
-        //getGameScene().setBackgroundRepeat("mountains.jpg");
+        getGameScene().setBackgroundRepeat("mountains.jpg");
         player = getGameWorld().spawn("player", 70, 600);
         getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
         getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
 
         getGameWorld().spawn("enemy", 390, 240);
 
-        JBoxSettings.velocityThreshold = 0f;
 
 
     }
@@ -256,6 +238,7 @@ public class MarioApp extends GameApplication {
                 if (getGameState().getInt("lives") == 0){
                     getDisplay().showMessageBox("Game over!", ()-> {
                         player.getWorld().setLevelFromMap("mario.json");
+                        getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
                         player.getControl(PhysicsControl.class).reposition(despawn);
                         getGameWorld().spawn("enemy", 390, 240);
                         getGameState().setValue("lives", 3);
@@ -306,7 +289,6 @@ public class MarioApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DANGER2) {
             @Override
             protected void onCollisionBegin(Entity player, Entity danger2) {
-
 
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");
