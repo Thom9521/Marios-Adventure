@@ -4,3 +4,4 @@
 
 ## Mario V2
 Velkommen til Mario V2. Spillet er programmeret i sammenhængede med den første bunden forudsætning i programmering på 2. semester som datamatiker på EASJ Næstved. Spillet er udviklet vha. FXGL som er et development framework baseret på Java 8 og 9. 
+![Almas](https://github.com/AlmasB)
