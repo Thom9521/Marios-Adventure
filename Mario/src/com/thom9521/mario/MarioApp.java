@@ -165,14 +165,18 @@ public class MarioApp extends GameApplication {
             protected void onCollisionBegin(Entity player, Entity door4) {
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("dothemario.mp3");
-                getDisplay().showMessageBox("THE END", () -> {
+
+                if (getGameState().getInt("score")== 2150){
+                getDisplay().showMessageBox("THE END! \n\nYou got the highest score possible! GJ!", () -> {
                     System.out.println("Dialog Closed!");
-                });
-                getDisplay().showMessageBox("Level 4 Complete!", () -> {
+                }); }else {
+                getDisplay().showMessageBox("THE END! \n\nBut seems like you misses some coins! \n\nTry again to" +
+                        " get all of them!", () -> {
                     System.out.println("Dialog Closed!");
+
                 });
 
-            }
+            }getDisplay().showMessageBox("Level 4 Complete!", () -> {}); }
         });
 
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY) {
