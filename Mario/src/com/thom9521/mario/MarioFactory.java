@@ -34,12 +34,13 @@ public class MarioFactory implements EntityFactory {
                 .from(data)
                 //.viewFromNodeWithBBox(new Rectangle(30,30,Color.RED))
                 .viewFromTextureWithBBox("marioEnemy.png")
-                .bbox(new HitBox(BoundingShape.box(20,25)))
+                .bbox(new HitBox(BoundingShape.box(20, 25)))
                 .with(physics)
                 .with(new CollidableComponent(true))
                 .with(new EnemyControl())
                 .build();
     }
+
     @Spawns("enemy2")
     public Entity newEnemy2(SpawnData data) {
         PhysicsComponent physics = new PhysicsComponent();
@@ -49,7 +50,7 @@ public class MarioFactory implements EntityFactory {
                 .type(MarioType.ENEMY2)
                 .from(data)
                 .viewFromTextureWithBBox("marioShell.png")
-                .bbox(new HitBox(BoundingShape.box(20,25)))
+                .bbox(new HitBox(BoundingShape.box(20, 25)))
                 .with(physics)
                 .with(new CollidableComponent(true))
                 .with(new EnemyControl2())
@@ -66,7 +67,7 @@ public class MarioFactory implements EntityFactory {
                 .from(data)
                 //.viewFromNodeWithBBox(new Rectangle(30,30,Color.RED))
                 .viewFromTextureWithBBox("marioEnemy.png")
-                .bbox(new HitBox(BoundingShape.box(20,25)))
+                .bbox(new HitBox(BoundingShape.box(20, 25)))
                 .with(physics)
                 .with(new CollidableComponent(true))
                 .with(new EnemyControl())
@@ -78,10 +79,11 @@ public class MarioFactory implements EntityFactory {
         return Entities.builder()
                 .type(MarioType.DANGER)
                 .from(data)
-                .bbox(new HitBox(BoundingShape.box(1246.62,65)))
+                .bbox(new HitBox(BoundingShape.box(1246.62, 65)))
                 .with(new CollidableComponent(true))
                 .build();
     }
+
     @Spawns("danger2")
     public Entity newDanger2(SpawnData data) {
         return Entities.builder()
@@ -93,15 +95,26 @@ public class MarioFactory implements EntityFactory {
                 .build();
     }
 
-    @Spawns("door")
-        public Entity newDoor(SpawnData data) {
-            return Entities.builder()
-                    .type(MarioType.DOOR)
-                    .from(data)
-                    .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
-                    .with(new CollidableComponent(true))
-                    .build();
+    @Spawns("danger3")
+    public Entity newDanger3(SpawnData data) {
+        return Entities.builder()
+                .type(MarioType.DANGER3)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(559.63, 112.16)))
+                .with(new CollidableComponent(true))
+                .build();
     }
+
+    @Spawns("door")
+    public Entity newDoor(SpawnData data) {
+        return Entities.builder()
+                .type(MarioType.DOOR)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new CollidableComponent(true))
+                .build();
+    }
+
     @Spawns("door2")
     public Entity newDoor2(SpawnData data) {
         return Entities.builder()
@@ -111,6 +124,7 @@ public class MarioFactory implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .build();
     }
+
     @Spawns("door3")
     public Entity newDoor3(SpawnData data) {
         return Entities.builder()
@@ -120,10 +134,21 @@ public class MarioFactory implements EntityFactory {
                 .with(new CollidableComponent(true))
                 .build();
     }
+
     @Spawns("door4")
     public Entity newDoor4(SpawnData data) {
         return Entities.builder()
                 .type(MarioType.DOOR4)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new CollidableComponent(true))
+                .build();
+    }
+
+    @Spawns("door5")
+    public Entity newDoor5(SpawnData data) {
+        return Entities.builder()
+                .type(MarioType.DOOR5)
                 .from(data)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new CollidableComponent(true))
@@ -137,7 +162,7 @@ public class MarioFactory implements EntityFactory {
         return Entities.builder()
                 .type(MarioType.PLAYER)
                 .from(data)
-                .bbox(new HitBox(BoundingShape.box(32,36)))
+                .bbox(new HitBox(BoundingShape.box(32, 36)))
                 //.viewFromNodeWithBBox(new Rectangle(30,30, Color.BLUE))
                 .with(physics)
                 .with(new IrremovableComponent())
@@ -152,7 +177,7 @@ public class MarioFactory implements EntityFactory {
                 .type(MarioType.COIN)
                 .from(data)
                 .viewFromTextureWithBBox("marioCoin.png")
-                .bbox(new HitBox(BoundingShape.box(25,28)))
+                .bbox(new HitBox(BoundingShape.box(25, 28)))
                 .with(new CollidableComponent(true))
                 .build();
     }
@@ -163,7 +188,7 @@ public class MarioFactory implements EntityFactory {
                 .type(MarioType.CHEST)
                 .from(data)
                 .viewFromTextureWithBBox("chest.png")
-                .bbox(new HitBox(BoundingShape.box(25,28)))
+                .bbox(new HitBox(BoundingShape.box(25, 28)))
                 .with(new CollidableComponent(true))
                 .build();
     }
@@ -174,8 +199,20 @@ public class MarioFactory implements EntityFactory {
                 .type(MarioType.HEART)
                 .from(data)
                 .viewFromTextureWithBBox("marioHeart.png")
-                .bbox(new HitBox(BoundingShape.box(25,28)))
+                .bbox(new HitBox(BoundingShape.box(25, 28)))
                 .with(new CollidableComponent(true))
                 .build();
     }
+
+    @Spawns("girl")
+    public Entity newGirl(SpawnData data) {
+        return Entities.builder()
+                .type(MarioType.GIRL)
+                .from(data)
+                .viewFromTextureWithBBox("dorami.png")
+                .bbox(new HitBox(BoundingShape.box(39, 42)))
+                .with(new CollidableComponent(true))
+                .build();
+
     }
+}

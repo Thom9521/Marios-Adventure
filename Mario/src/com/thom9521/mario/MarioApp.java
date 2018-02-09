@@ -68,11 +68,11 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario.json");
+        getGameWorld().setLevelFromMap("mario5.json");
         getAudioPlayer().playMusic("themesong.mp3");
         getGameScene().setBackgroundRepeat("forrest.png");
         player = getGameWorld().spawn("player", 70, 600);
-        getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
+        getGameScene().getViewport().setBounds(-1500, 0, 5000, getHeight());
         getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
         getGameWorld().spawn("enemy", 390, 240);
 
@@ -112,11 +112,12 @@ public class MarioApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.PLATFORM) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.GIRL) {
             @Override
-            protected void onCollisionBegin(Entity player, Entity platform) {
-                JBoxSettings.velocityThreshold = 0.1f;
-            }});
+            protected void onCollisionBegin(Entity player, Entity girl) {
+               getDisplay().showMessageBox("You saved you girlfirend! \nNice one ;)", () ->{});
+            }
+        });
 
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR) {
             @Override
@@ -174,29 +175,42 @@ public class MarioApp extends GameApplication {
                     getGameWorld().spawn("enemy3", 1400, 450);
                     player.getControl(PhysicsControl.class).reposition(despawn4);
 
+                });
+            }
+        });
+
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR4) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity door2) {
+                getDisplay().showMessageBox("Level 4 Complete!", () -> {
+                    System.out.println("Dialog Closed!");
+                    getAudioPlayer().playSound("1-up.wav");
+                    player.getWorld().setLevelFromMap("mario5.json");
+                    getGameScene().getViewport().setBounds(-1500, 0, 5000, getHeight());
+                    getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
+                    player.getControl(PhysicsControl.class).reposition(despawn);
 
                 });
 
             }
         });
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR4) {
+
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR5) {
             @Override
             protected void onCollisionBegin(Entity player, Entity door4) {
                 FXGL.getAudioPlayer().stopAllMusic();
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().setGlobalMusicVolume(100);
                 getAudioPlayer().playMusic("dothemario.mp3");
-                if (getGameState().getInt("score")== 3000){
+                if (getGameState().getInt("score")== 4550){
                 getDisplay().showMessageBox("THE END! \n\nYou got the highest score possible! \nGood Job!", () -> {
                     System.out.println("Dialog Closed!");
                 }); }else {
                 getDisplay().showMessageBox("THE END! \n\nBut seems like you missed some coins! \n\nTry again to" +
                         " get all of them!", () -> {
                     System.out.println("Dialog Closed!");
-
                 });
-
-            }getDisplay().showMessageBox("Level 4 Complete!", () -> {}); }
+            }getDisplay().showMessageBox("Level 5 Complete!", () -> {}); }
         });
 
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.ENEMY) {
@@ -349,6 +363,33 @@ public class MarioApp extends GameApplication {
             }
         });
 
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DANGER3) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity danger3) {
+
+                FXGL.getAudioPlayer().stopAllMusic();
+                FXGL.getAudioPlayer().stopAllSounds();
+                getAudioPlayer().playSound("die.wav");
+                getGameState().increment("lives",-1);
+                if (getGameState().getInt("lives") == 0){
+                    getDisplay().showMessageBox("Game over!", ()-> {
+                        player.getWorld().setLevelFromMap("mario5.json");
+                        player.getControl(PhysicsControl.class).reposition(despawn);
+                        getGameState().setValue("lives", 3);
+                        getGameState().setValue("score", 0);
+                        getAudioPlayer().playMusic("themesong.mp3");
+                    });
+                }
+                else {
+                    getDisplay().showMessageBox("Try again!", () -> {
+                        player.getWorld();
+                        player.getControl(PhysicsControl.class).reposition(despawn);
+                        getAudioPlayer().playMusic("themesong.mp3");
+                    });
+                }
+
+            }
+        });
 
     }
 
