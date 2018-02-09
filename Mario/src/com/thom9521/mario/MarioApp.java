@@ -64,6 +64,15 @@ public class MarioApp extends GameApplication {
             }
         }, KeyCode.UP);
 
+
+        getInput().addAction(new UserAction("Ekstra liv") {
+            @Override
+            protected void onActionBegin() {
+                getGameState().increment("lives",+1);
+                getAudioPlayer().playSound("heart.wav");
+            }
+        }, KeyCode.F1);
+
     }
 
     @Override
