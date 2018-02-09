@@ -37,23 +37,38 @@ public class MarioFactory implements EntityFactory {
                 .bbox(new HitBox(BoundingShape.box(20, 25)))
                 .with(physics)
                 .with(new CollidableComponent(true))
-                .with(new EnemyControl())
+                .with(new ShroomControl())
                 .build();
     }
 
-    @Spawns("enemy2")
+    @Spawns("shell")
     public Entity newEnemy2(SpawnData data) {
         PhysicsComponent physics = new PhysicsComponent();
         physics.setBodyType(BodyType.DYNAMIC);
 
         return Entities.builder()
-                .type(MarioType.ENEMY2)
+                .type(MarioType.SHELL)
                 .from(data)
                 .viewFromTextureWithBBox("marioShell.png")
                 .bbox(new HitBox(BoundingShape.box(20, 25)))
                 .with(physics)
                 .with(new CollidableComponent(true))
-                .with(new EnemyControl2())
+                .with(new ShellControl())
+                .build();
+    }
+    @Spawns("shell2")
+    public Entity newShell2(SpawnData data) {
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.DYNAMIC);
+
+        return Entities.builder()
+                .type(MarioType.SHELL2)
+                .from(data)
+                .viewFromTextureWithBBox("marioShell.png")
+                .bbox(new HitBox(BoundingShape.box(20, 25)))
+                .with(physics)
+                .with(new CollidableComponent(true))
+                .with(new ShellControl())
                 .build();
     }
 
@@ -70,7 +85,23 @@ public class MarioFactory implements EntityFactory {
                 .bbox(new HitBox(BoundingShape.box(20, 25)))
                 .with(physics)
                 .with(new CollidableComponent(true))
-                .with(new EnemyControl())
+                .with(new ShroomControl())
+                .build();
+    }
+
+    @Spawns("fireball")
+    public Entity newFireball(SpawnData data) {
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.DYNAMIC);
+
+        return Entities.builder()
+                .type(MarioType.FIREBALL)
+                .from(data)
+                .viewFromTextureWithBBox("fireball.png")
+                .bbox(new HitBox(BoundingShape.box(20, 25)))
+                .with(physics)
+                .with(new CollidableComponent(true))
+                .with(new FireballControl())
                 .build();
     }
 
@@ -100,6 +131,7 @@ public class MarioFactory implements EntityFactory {
         return Entities.builder()
                 .type(MarioType.DANGER3)
                 .from(data)
+                .viewFromTextureWithBBox("lava.png")
                 .bbox(new HitBox(BoundingShape.box(559.63, 112.16)))
                 .with(new CollidableComponent(true))
                 .build();
@@ -162,7 +194,7 @@ public class MarioFactory implements EntityFactory {
         return Entities.builder()
                 .type(MarioType.PLAYER)
                 .from(data)
-                .bbox(new HitBox(BoundingShape.box(32, 36)))
+                .bbox(new HitBox(BoundingShape.box(32, 32)))
                 //.viewFromNodeWithBBox(new Rectangle(30,30, Color.BLUE))
                 .with(physics)
                 .with(new IrremovableComponent())

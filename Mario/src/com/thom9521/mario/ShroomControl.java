@@ -7,7 +7,7 @@ import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.time.LocalTimer;
 import javafx.util.Duration;
 
-public class EnemyControl extends Control {
+public class ShroomControl extends Control {
 
     private PhysicsComponent physics;
 
@@ -21,7 +21,7 @@ public class EnemyControl extends Control {
 
     @Override
     public void onUpdate(Entity entity, double tpf) {
-        if (jumpTimer.elapsed(Duration.seconds(3))) {
+        if (jumpTimer.elapsed(Duration.seconds(Math.random()*4+2))) {
             jump();
             jumpTimer.capture();
         }

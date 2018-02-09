@@ -7,7 +7,7 @@ import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.time.LocalTimer;
 import javafx.util.Duration;
 
-public class EnemyControl2 extends Control {
+public class ShellControl extends Control {
 
     private PhysicsComponent physics;
 
