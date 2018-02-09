@@ -186,8 +186,8 @@ public class MarioApp extends GameApplication {
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().setGlobalMusicVolume(100);
                 getAudioPlayer().playMusic("dothemario.mp3");
-                if (getGameState().getInt("score")== 3200){
-                getDisplay().showMessageBox("THE END! \n\nYou got the highest score possible! GJ!", () -> {
+                if (getGameState().getInt("score")== 3000){
+                getDisplay().showMessageBox("THE END! \n\nYou got the highest score possible! \nGood Job!", () -> {
                     System.out.println("Dialog Closed!");
                 }); }else {
                 getDisplay().showMessageBox("THE END! \n\nBut seems like you missed some coins! \n\nTry again to" +
