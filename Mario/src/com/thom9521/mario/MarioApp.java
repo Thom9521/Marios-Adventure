@@ -124,6 +124,7 @@ public class MarioApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.GIRL) {
             @Override
             protected void onCollisionBegin(Entity player, Entity girl) {
+                getAudioPlayer().playSound("doramiWo.wav");
                getDisplay().showMessageBox("You saved you girlfirend! \nNice one ;)", () ->{});
             }
         });
@@ -177,8 +178,8 @@ public class MarioApp extends GameApplication {
                     getGameScene().getViewport().setBounds(-1500, 0, 3000, 1050);
                     getGameWorld().spawn("enemy3", 450, 235);
                     getGameWorld().spawn("enemy3",570, 235);
-                    getGameWorld().spawn("shell2", 600, 400);
-                    getGameWorld().spawn("shell2", 900, 600);
+                    getGameWorld().spawn("shell", 600, 400);
+                    getGameWorld().spawn("shell", 900, 600);
                     getGameWorld().spawn("enemy3", 1600, 450);
                     getGameWorld().spawn("enemy3", 1500, 450);
                     getGameWorld().spawn("enemy3", 1400, 450);
@@ -382,6 +383,7 @@ public class MarioApp extends GameApplication {
 
                 FXGL.getAudioPlayer().stopAllMusic();
                 FXGL.getAudioPlayer().stopAllSounds();
+                getAudioPlayer().playSound("bowserLaugh.wav");
                 getAudioPlayer().playSound("die.wav");
                 getGameState().increment("lives",-1);
                 if (getGameState().getInt("lives") == 0){

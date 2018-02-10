@@ -64,7 +64,7 @@ public class MarioFactory implements EntityFactory {
         return Entities.builder()
                 .type(MarioType.SHELL2)
                 .from(data)
-                .viewFromTextureWithBBox("marioShell.png")
+                .viewFromTextureWithBBox("shellRed.png")
                 .bbox(new HitBox(BoundingShape.box(20, 25)))
                 .with(physics)
                 .with(new CollidableComponent(true))
