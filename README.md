@@ -1,5 +1,5 @@
 # Bunden Forudsætning - Spiludvikling
-Find spillet <b>[her](https://github.com/Thom9521/Marios-Adventure/blob/master/out/artifacts/Mariotest_jar/Mariotest.jar)</b>!
+Find spillet <b>[her](https://github.com/Thom9521/Marios-Adventure/blob/master/out/artifacts/Mariotest_jar/Mariotest.jar)</b>! ![Alt player](https://github.com/Thom9521/Marios-Adventure/blob/master/Mario/src/assets/textures/doraemonSitLille.png)
 
 ![Alt Eksempel:](https://github.com/Thom9521/Doraemons-Adventure/blob/master/Mario/src/assets/textures/Eksempel2.png)
 
