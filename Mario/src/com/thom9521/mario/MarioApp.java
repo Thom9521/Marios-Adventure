@@ -8,13 +8,10 @@ import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsControl;
 import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.texture.Texture;
-
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
-
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-
 import java.util.Map;
 
 
@@ -77,7 +74,7 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario.json");
+        getGameWorld().setLevelFromMap("mario5.json");
         getAudioPlayer().playMusic("themesong.mp3");
         getGameScene().setBackgroundRepeat("forrest.png");
         player = getGameWorld().spawn("player", 70, 600);
