@@ -8,6 +8,8 @@ import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsControl;
 import com.almasb.fxgl.physics.box2d.common.JBoxSettings;
+import com.almasb.fxgl.physics.box2d.dynamics.Fixture;
+import com.almasb.fxgl.physics.box2d.dynamics.FixtureDef;
 import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.texture.Texture;
 
@@ -31,15 +33,19 @@ public class MarioApp extends GameApplication {
         settings.setTitle("Marios Adventure");
         settings.setVersion("1.0");
 
+
     }
 
     private Entity player;
 
-
-
+    FixtureDef fd = new FixtureDef();
 
     Point2D despawn = new Point2D(70, 600);
     Point2D despawn4 = new Point2D(70, 235);
+
+
+
+
 
     @Override
     protected void initInput() {
@@ -87,8 +93,6 @@ public class MarioApp extends GameApplication {
 
         getAudioPlayer().setGlobalMusicVolume(0.1);
         getAudioPlayer().setGlobalSoundVolume(1);
-
-
     }
 
 
@@ -112,6 +116,7 @@ public class MarioApp extends GameApplication {
             }
         });
 
+
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.HEART) {
             @Override
             protected void onCollisionBegin(Entity player, Entity heart) {
@@ -125,7 +130,7 @@ public class MarioApp extends GameApplication {
             @Override
             protected void onCollisionBegin(Entity player, Entity girl) {
                 getAudioPlayer().playSound("doramiWo.wav");
-               getDisplay().showMessageBox("You saved you girlfirend! \nNice one ;)", () ->{});
+               getDisplay().showMessageBox("You saved you girlfirend!", () ->{});
             }
         });
 

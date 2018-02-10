@@ -6,6 +6,8 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.PositionComponent;
 import com.almasb.fxgl.entity.component.Required;
 import com.almasb.fxgl.physics.PhysicsComponent;
+import com.almasb.fxgl.physics.box2d.common.JBoxSettings;
+import com.almasb.fxgl.physics.box2d.dynamics.FixtureDef;
 import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
 import javafx.util.Duration;
@@ -18,6 +20,8 @@ public class PlayerControl extends Control {
     private AnimatedTexture texture;
 
     private AnimationChannel animIdle, animWalk;
+
+    FixtureDef fd = new FixtureDef();
 
     public PlayerControl(){
 
@@ -36,8 +40,10 @@ public class PlayerControl extends Control {
     @Override
     public void onUpdate(Entity entity, double tpf) {
 
+
+
         if(isMoving()){
-            texture.setAnimationChannel(animWalk);
+            texture.setAnimationChannel(animWalk); 
         } else{
             texture.setAnimationChannel(animIdle);
         }

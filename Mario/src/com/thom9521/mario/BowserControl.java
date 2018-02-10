@@ -1,17 +1,24 @@
 package com.thom9521.mario;
 
 import com.almasb.fxgl.app.FXGL;
+import com.almasb.fxgl.audio.AudioPlayer;
+
 import com.almasb.fxgl.entity.Control;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.time.LocalTimer;
 import javafx.util.Duration;
 
-public class BowserControl extends Control{
+
+
+
+public class BowserControl extends Control {
 
     private PhysicsComponent physics;
 
     private LocalTimer jumpTimer;
+
+
 
     @Override
     public void onAdded(Entity entity) {
@@ -23,6 +30,7 @@ public class BowserControl extends Control{
     public void onUpdate(Entity entity, double tpf) {
         if (jumpTimer.elapsed(Duration.seconds(3))) {
             jump();
+
             jumpTimer.capture();
         }
     }
