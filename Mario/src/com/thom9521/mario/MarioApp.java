@@ -1,19 +1,14 @@
 package com.thom9521.mario;
 
-
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsControl;
-import com.almasb.fxgl.physics.box2d.common.JBoxSettings;
-import com.almasb.fxgl.physics.box2d.dynamics.Fixture;
-import com.almasb.fxgl.physics.box2d.dynamics.FixtureDef;
 import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.texture.Texture;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 
@@ -23,7 +18,6 @@ import javafx.scene.text.Text;
 import java.util.Map;
 
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class MarioApp extends GameApplication {
 
     @Override
@@ -38,7 +32,7 @@ public class MarioApp extends GameApplication {
 
     private Entity player;
 
-    FixtureDef fd = new FixtureDef();
+
 
     Point2D despawn = new Point2D(70, 600);
     Point2D despawn4 = new Point2D(70, 235);
@@ -196,14 +190,13 @@ public class MarioApp extends GameApplication {
 
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR4) {
             @Override
-            protected void onCollisionBegin(Entity player, Entity door2) {
+            protected void onCollisionBegin(Entity player, Entity door4) {
                 getDisplay().showMessageBox("Level 4 Complete!", () -> {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
                     player.getWorld().setLevelFromMap("mario5.json");
                     getGameScene().setBackgroundRepeat("lavacave.png");
                     getGameScene().getViewport().setBounds(-1500, 0, 5000, getHeight());
-                    getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
                     player.getControl(PhysicsControl.class).reposition(despawn);
                     getGameWorld().spawn("shell2", 1900, 600);
                     getGameWorld().spawn("shell2", 2500, 600);
@@ -215,7 +208,7 @@ public class MarioApp extends GameApplication {
 
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.DOOR5) {
             @Override
-            protected void onCollisionBegin(Entity player, Entity door4) {
+            protected void onCollisionBegin(Entity player, Entity door5) {
                 FXGL.getAudioPlayer().stopAllMusic();
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().setGlobalMusicVolume(100);

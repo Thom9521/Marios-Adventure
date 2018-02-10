@@ -7,13 +7,10 @@ import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
-import com.almasb.fxgl.physics.box2d.dynamics.FixtureDef;
 
 
 @SetEntityFactory
 public class MarioFactory implements EntityFactory {
-
-    FixtureDef fd = new FixtureDef();
 
 
     @Spawns("platform")
@@ -151,7 +148,7 @@ public class MarioFactory implements EntityFactory {
         return Entities.builder()
                 .type(MarioType.DANGER3)
                 .from(data)
-                .viewFromTextureWithBBox("lava.png")
+                .viewFromTextureWithBBox("lava.PNG")
                 .bbox(new HitBox(BoundingShape.box(559.63, 112.16)))
                 .with(new CollidableComponent(true))
                 .build();
@@ -261,7 +258,7 @@ public class MarioFactory implements EntityFactory {
         return Entities.builder()
                 .type(MarioType.GIRL)
                 .from(data)
-                .viewFromTextureWithBBox("dorami.png")
+                .viewFromTextureWithBBox("Dorami.png")
                 .bbox(new HitBox(BoundingShape.box(39, 42)))
                 .with(new CollidableComponent(true))
                 .build();

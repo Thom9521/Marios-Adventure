@@ -1,12 +1,10 @@
 package com.thom9521.mario;
 
-import com.almasb.fxgl.core.math.FXGLMath;
+
 import com.almasb.fxgl.entity.Control;
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.PhysicsComponent;
-import com.almasb.fxgl.texture.AnimatedTexture;
-import com.almasb.fxgl.texture.AnimationChannel;
 import com.almasb.fxgl.time.LocalTimer;
 import javafx.util.Duration;
 

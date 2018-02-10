@@ -6,7 +6,6 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.PositionComponent;
 import com.almasb.fxgl.entity.component.Required;
 import com.almasb.fxgl.physics.PhysicsComponent;
-import com.almasb.fxgl.physics.box2d.common.JBoxSettings;
 import com.almasb.fxgl.physics.box2d.dynamics.FixtureDef;
 import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
@@ -43,7 +42,7 @@ public class PlayerControl extends Control {
 
 
         if(isMoving()){
-            texture.setAnimationChannel(animWalk); 
+            texture.setAnimationChannel(animWalk);
         } else{
             texture.setAnimationChannel(animIdle);
         }
