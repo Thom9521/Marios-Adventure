@@ -38,7 +38,7 @@ public class MarioApp extends GameApplication {
 
 
 
-    Point2D despawn = new Point2D(50, 600);
+    Point2D despawn = new Point2D(70, 600);
     Point2D despawn4 = new Point2D(70, 235);
 
     @Override
@@ -77,7 +77,7 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario5.json");
+        getGameWorld().setLevelFromMap("mario.json");
         getAudioPlayer().playMusic("themesong.mp3");
         getGameScene().setBackgroundRepeat("forrest.png");
         player = getGameWorld().spawn("player", 70, 600);
@@ -195,6 +195,7 @@ public class MarioApp extends GameApplication {
                     System.out.println("Dialog Closed!");
                     getAudioPlayer().playSound("1-up.wav");
                     player.getWorld().setLevelFromMap("mario5.json");
+                    getGameScene().setBackgroundRepeat("lavacave.png");
                     getGameScene().getViewport().setBounds(-1500, 0, 5000, getHeight());
                     getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
                     player.getControl(PhysicsControl.class).reposition(despawn);
@@ -213,7 +214,7 @@ public class MarioApp extends GameApplication {
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().setGlobalMusicVolume(100);
                 getAudioPlayer().playMusic("dothemario.mp3");
-                if (getGameState().getInt("score")== 4600){
+                if (getGameState().getInt("score")== 4300){
                 getDisplay().showMessageBox("THE END! \n\nYou got the highest score possible! \nGood Job!", () -> {
                     System.out.println("Dialog Closed!");
                 }); }else {
@@ -284,9 +285,9 @@ public class MarioApp extends GameApplication {
             }
         });
 
-        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.SHELL) {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.SHELL2) {
             @Override
-            protected void onCollisionBegin(Entity player, Entity shell) {
+            protected void onCollisionBegin(Entity player, Entity shell2) {
 
                 FXGL.getAudioPlayer().stopAllMusic();
                 FXGL.getAudioPlayer().stopAllSounds();
@@ -348,6 +349,37 @@ public class MarioApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.FIREBALL) {
             @Override
             protected void onCollisionBegin(Entity player, Entity fireball) {
+                FXGL.getAudioPlayer().stopAllMusic();
+                FXGL.getAudioPlayer().stopAllSounds();
+                getAudioPlayer().playSound("die.wav");
+                getGameState().increment("lives",-1);
+                if (getGameState().getInt("lives") == 0){
+                    getDisplay().showMessageBox("Game over!", ()-> {
+                        player.getWorld().setLevelFromMap("mario.json");
+                        getGameScene().setBackgroundRepeat("forrest.png");
+                        getGameScene().getViewport().setBounds(-1500, 0, 3000, getHeight());
+                        player.getControl(PhysicsControl.class).reposition(despawn);
+                        getGameWorld().spawn("enemy", 390, 240);
+                        getGameState().setValue("lives", 3);
+                        getGameState().setValue("score", 0);
+                        getAudioPlayer().playMusic("themesong.mp3");
+                    });
+                }
+                else {
+                    getDisplay().showMessageBox("Try again!", () -> {
+                        player.getWorld();
+                        player.getControl(PhysicsControl.class).reposition(despawn);
+                        getAudioPlayer().playMusic("themesong.mp3");
+                    });
+                }
+
+            }
+        });
+
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(MarioType.PLAYER, MarioType.BOWSER) {
+            @Override
+            protected void onCollisionBegin(Entity player, Entity bowser) {
+
                 FXGL.getAudioPlayer().stopAllMusic();
                 FXGL.getAudioPlayer().stopAllSounds();
                 getAudioPlayer().playSound("die.wav");

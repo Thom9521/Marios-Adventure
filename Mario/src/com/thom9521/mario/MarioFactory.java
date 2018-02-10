@@ -114,9 +114,10 @@ public class MarioFactory implements EntityFactory {
                 .type(MarioType.BOWSER)
                 .from(data)
                 .viewFromTexture("bowser.png")
-                .bbox(new HitBox(BoundingShape.box(65, 73)))
+                .bbox(new HitBox(BoundingShape.box(65, 65)))
                 .with(physics)
                 .with(new CollidableComponent(true))
+                .with(new BowserControl())
                 .build();
     }
 
