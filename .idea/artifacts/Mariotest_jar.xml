@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Mariotest:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Mariotest_jar</output-path>
+    <root id="archive" name="Mariotest.jar">
+      <element id="module-output" name="Mariotest" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/Datamatikker/Bunden_Forudsætning_EtSpil/fxgl-0.4.2-uber/fxgl-0.4.2-uber.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
