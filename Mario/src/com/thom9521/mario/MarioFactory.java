@@ -105,6 +105,21 @@ public class MarioFactory implements EntityFactory {
                 .build();
     }
 
+    @Spawns("bowser")
+    public Entity newBowser(SpawnData data) {
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.DYNAMIC);
+
+        return Entities.builder()
+                .type(MarioType.BOWSER)
+                .from(data)
+                .viewFromTexture("bowser.png")
+                .bbox(new HitBox(BoundingShape.box(65, 73)))
+                .with(physics)
+                .with(new CollidableComponent(true))
+                .build();
+    }
+
     @Spawns("danger")
     public Entity newDanger(SpawnData data) {
         return Entities.builder()
