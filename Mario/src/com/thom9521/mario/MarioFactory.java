@@ -57,6 +57,7 @@ public class MarioFactory implements EntityFactory {
                 .with(new ShellControl())
                 .build();
     }
+
     @Spawns("shell2")
     public Entity newShell2(SpawnData data) {
         PhysicsComponent physics = new PhysicsComponent();
