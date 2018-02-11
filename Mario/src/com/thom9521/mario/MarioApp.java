@@ -69,7 +69,7 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario.json");
+        getGameWorld().setLevelFromMap("mario3.json");
         getAudioPlayer().playMusic("themesong.mp3");
         getGameScene().setBackgroundRepeat("forrest.png");
         player = getGameWorld().spawn("player", 70, 600);
@@ -192,6 +192,9 @@ public class MarioApp extends GameApplication {
                     player.getControl(PhysicsControl.class).reposition(despawn);
                     getGameWorld().spawn("shell2", 1900, 600);
                     getGameWorld().spawn("shell2", 2500, 600);
+                    FXGL.getAudioPlayer().stopAllMusic();
+                    getAudioPlayer().playMusic("castle.mp3");
+                    getAudioPlayer().setGlobalMusicVolume(100);
 
                 });
 
@@ -236,6 +239,7 @@ public class MarioApp extends GameApplication {
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
                         getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(0.1);
                     });
                 } else {
                     getDisplay().showMessageBox("Try again!", () -> {
@@ -266,6 +270,7 @@ public class MarioApp extends GameApplication {
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
                         getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(0.1);
                     });
                 } else {
                     getDisplay().showMessageBox("Try again!", () -> {
@@ -295,13 +300,15 @@ public class MarioApp extends GameApplication {
                         getGameWorld().spawn("enemy", 390, 240);
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
-                        getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().playMusic("themsong.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(0.1);
                     });
                 } else {
                     getDisplay().showMessageBox("Try again!", () -> {
                         player.getWorld();
                         player.getControl(PhysicsControl.class).reposition(despawn);
-                        getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().playMusic("castle.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(100);
                     });
                 }
 
@@ -325,6 +332,7 @@ public class MarioApp extends GameApplication {
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
                         getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(0.1);
                     });
                 } else {
                     getDisplay().showMessageBox("Try again!", () -> {
@@ -354,12 +362,14 @@ public class MarioApp extends GameApplication {
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
                         getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(0.1);
                     });
                 } else {
                     getDisplay().showMessageBox("Try again!", () -> {
                         player.getWorld();
                         player.getControl(PhysicsControl.class).reposition(despawn);
-                        getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().playMusic("castle.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(100);
                     });
                 }
 
@@ -385,12 +395,14 @@ public class MarioApp extends GameApplication {
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
                         getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(0.1);
                     });
                 } else {
                     getDisplay().showMessageBox("Try again!", () -> {
                         player.getWorld();
                         player.getControl(PhysicsControl.class).reposition(despawn);
-                        getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().playMusic("castle.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(100);
                     });
                 }
 
@@ -414,6 +426,7 @@ public class MarioApp extends GameApplication {
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
                         getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(0.1);
                     });
                 } else {
                     getDisplay().showMessageBox("Try again!", () -> {
@@ -443,6 +456,7 @@ public class MarioApp extends GameApplication {
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
                         getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(0.1);
                     });
                 } else {
                     getDisplay().showMessageBox("Try again!", () -> {
@@ -470,12 +484,14 @@ public class MarioApp extends GameApplication {
                         getGameState().setValue("lives", 3);
                         getGameState().setValue("score", 0);
                         getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(0.1);
                     });
                 } else {
                     getDisplay().showMessageBox("Try again!", () -> {
                         player.getWorld();
                         player.getControl(PhysicsControl.class).reposition(despawn);
-                        getAudioPlayer().playMusic("themesong.mp3");
+                        getAudioPlayer().playMusic("castle.mp3");
+                        getAudioPlayer().setGlobalMusicVolume(100);
                     });
                 }
 
