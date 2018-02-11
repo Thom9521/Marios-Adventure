@@ -69,7 +69,7 @@ public class MarioApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().setLevelFromMap("mario3.json");
+        getGameWorld().setLevelFromMap("mario.json");
         getAudioPlayer().playMusic("themesong.mp3");
         getGameScene().setBackgroundRepeat("forrest.png");
         player = getGameWorld().spawn("player", 70, 600);
