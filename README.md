@@ -1,6 +1,8 @@
 # Bunden Forudsætning - Spiludvikling
 Find spillet <b>[her](https://github.com/Thom9521/Marios-Adventure/blob/master/Jarfile/artifacts/Mariotest_jar/MariosAdventure.jar)</b>!    ![Alt player](https://github.com/Thom9521/Marios-Adventure/blob/master/Mario/src/assets/textures/doraemonSitLille.png)
 
+Har du ikke JDK så finder du det <b>[her](http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html).
+
 ![Alt Eksempel:](https://github.com/Thom9521/Doraemons-Adventure/blob/master/Mario/src/assets/textures/Eksempel2.png)
 
 ## Om:
