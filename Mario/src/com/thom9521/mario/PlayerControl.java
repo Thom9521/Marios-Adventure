@@ -47,7 +47,8 @@ public class PlayerControl extends Control {
             texture.setAnimationChannel(animIdle);
         }
         if (Math.abs(physics.getVelocityX()) < 145){ //Player stopper med at gå hvis hastigheden kommer under 140.
-            physics.setVelocityX(0);}
+            physics.setVelocityX(0);
+        }
 
     }
 

@@ -6,6 +6,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsControl;
+import com.almasb.fxgl.physics.box2d.common.JBoxSettings;
 import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Point2D;
@@ -24,6 +25,8 @@ public class MarioApp extends GameApplication {
         settings.setHeight(10 * 70);
         settings.setTitle("Marios Adventure");
         settings.setVersion("1.0");
+        settings.setMenuEnabled(true);
+        settings.setSceneFactory(new MarioSceneFactory());
 
 
     }
@@ -79,6 +82,7 @@ public class MarioApp extends GameApplication {
 
         getAudioPlayer().setGlobalMusicVolume(0.1);
         getAudioPlayer().setGlobalSoundVolume(1);
+
     }
 
 

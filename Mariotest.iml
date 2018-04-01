@@ -10,10 +10,11 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Datamatikker/Bunden_Forudsætning_EtSpil/fxgl-0.4.2-uber/fxgl-0.4.2-uber.jar!/" />
+          <root url="file://$USER_HOME$/Desktop/Datamatikker/Bunden_Forudsætning_EtSpil/fxgl-0.4.3-uber" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/Desktop/Datamatikker/Bunden_Forudsætning_EtSpil/fxgl-0.4.3-uber" recursive="false" />
       </library>
     </orderEntry>
   </component>
